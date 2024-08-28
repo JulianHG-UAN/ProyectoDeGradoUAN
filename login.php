@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Login</title>
+    <title>Psymetrics</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -39,38 +39,32 @@
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Bienvenido a PsyMetrics!</h1>
                                     </div>
                                     <form action='validar.php' method='post' class="user">
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address..." name='usuario'>
+                                                placeholder="Ingresa tu Email..." name='usuario'>
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password" name='password'>
+                                                id="exampleInputPassword" placeholder="Contraseña" name='password'>
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember
-                                                    Me</label>
+                                                <label class="custom-control-label" for="customCheck">Recuerdame</label>
                                             </div>
                                         </div>
                                         <input type='submit' value='Ingresar' class="btn btn-primary btn-user btn-block">
-<!--                                         
-                                        <a href="index.php" class="btn btn-primary btn-user btn-block" value='ingresar'>
-                                            Login
-                                        </a> -->
-
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="forgot-password.php">Forgot Password?</a>
+                                        <a class="small" href="forgot-password.php">Olvidaste la contraseña?</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="register.php">Create an Account!</a>
+                                        <a class="small" href="register.php">Crear una nueva cuenta!</a>
                                     </div>
                                 </div>
                             </div>
