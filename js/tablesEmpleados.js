@@ -2,7 +2,7 @@
 $(document).ready(function() {
     tablaEmpleados = $('#tablaEmpleados').DataTable({
         "columnDefs": [{
-            "targets": 0,
+            "targets": -1,
             "data": null,
             "defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btnEditar'>Editar</button><button class='btn btn-danger btnBorrar'>Borrar</button></div></div>"
         }],
@@ -151,7 +151,7 @@ $("#formEmpleados").submit(function(e){
         url: "bd/crud_empleados.php",
         type: "POST",
         dataType: "json",
-        data: {opcion:opcion, employee_Id:employee_Id, company_id:company_id, employee_Name:employee_Name, employee_Secondname:employee_Secondname, employee_Lastname:employee_Lastname, employee_Secondlastname:employee_Secondlastname, employee_Genero:employee_Genero, employee_Birthdate:employee_Birthdate, employee_EstadoCivil:employee_EstadoCivil, employee_UltimoNivelEstudio:employee_UltimoNivelEstudio, employee_Ocupacion:employee_Ocupacion, employee_ResidenciaDepartamento:employee_ResidenciaDepartamento, employee_ResidenciaCuidad:employee_ResidenciaCuidad, employee_EstratoSocial:employee_EstratoSocial, employee_TipoVivienda:employee_TipoVivienda, employee_PersonasACargo:employee_PersonasACargo, employee_TrabajoDepartamento:employee_TrabajoDepartamento, employee_TrabajoCuidad:employee_TrabajoCuidad, employee_TiempoEnEmpresa:employee_TiempoEnEmpresa, employee_NombreCargo:employee_NombreCargo, employee_TipoCargo:employee_TipoCargo, employee_TiempoEnCargo:employee_TiempoEnCargo, employee_NombreArea:employee_NombreArea, employee_TipoContrato:employee_TipoContrato, employee_HorasLaborales:employee_HorasLaborales, employee_TipoSalario:employee_TipoSalario},
+        data: {employee_Id:employee_Id, company_id:company_id, employee_Name:employee_Name, employee_Secondname:employee_Secondname, employee_Lastname:employee_Lastname, employee_Secondlastname:employee_Secondlastname, employee_Genero:employee_Genero, employee_Birthdate:employee_Birthdate, employee_EstadoCivil:employee_EstadoCivil, employee_UltimoNivelEstudio:employee_UltimoNivelEstudio, employee_Ocupacion:employee_Ocupacion, employee_ResidenciaDepartamento:employee_ResidenciaDepartamento, employee_ResidenciaCuidad:employee_ResidenciaCuidad, employee_EstratoSocial:employee_EstratoSocial, employee_TipoVivienda:employee_TipoVivienda, employee_PersonasACargo:employee_PersonasACargo, employee_TrabajoDepartamento:employee_TrabajoDepartamento, employee_TrabajoCuidad:employee_TrabajoCuidad, employee_TiempoEnEmpresa:employee_TiempoEnEmpresa, employee_NombreCargo:employee_NombreCargo, employee_TipoCargo:employee_TipoCargo, employee_TiempoEnCargo:employee_TiempoEnCargo, employee_NombreArea:employee_NombreArea, employee_TipoContrato:employee_TipoContrato, employee_HorasLaborales:employee_HorasLaborales, employee_TipoSalario:employee_TipoSalario, opcion:opcion},
         success: function(data){  
             console.log(data);
             employee_Id = data[0].employee_Id;

@@ -30,7 +30,6 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                         <table id="tablaEmpleados" class="table table-striped table-bordered table-condensed" style="width:100%">
                         <thead class="text-center">
                             <tr>
-                                <th>Acciones</th>
                                 <th>employee_Id</th>
                                 <th>company_id</th>
                                 <th>employee_Name</th>
@@ -57,6 +56,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <th>employee_TipoContrato</th>
                                 <th>employee_HorasLaborales</th>
                                 <th>employee_TipoSalario</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -64,7 +64,6 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                             foreach($data as $dat) {                                                        
                             ?>
                             <tr>
-                                <td></td>
                                 <td><?php echo $dat['employee_Id'] ?></td>
                                 <td><?php echo $dat['company_id'] ?></td>
                                 <td><?php echo $dat['employee_Name'] ?></td>
@@ -91,6 +90,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <td><?php echo $dat['employee_TipoContrato'] ?></td>
                                 <td><?php echo $dat['employee_HorasLaborales'] ?></td>
                                 <td><?php echo $dat['employee_TipoSalario'] ?></td>
+                                <td></td>
                             </tr>
                             <?php
                                 }
