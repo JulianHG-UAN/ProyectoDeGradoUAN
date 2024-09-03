@@ -1,27 +1,37 @@
 <?php
+// Incluir el archivo de conexión a la base de datos
+require_once './bd/conexion.php';
 
-$usuario = $_POST['usuario'];
-$password = $_POST['password'];
+try {
+    // Obtener los valores del formulario
+    $usuario = $_POST['usuario'];
+    $password = $_POST['password'];
 
-session_start();
-$_SESSION['usuario'] = $usuario; //almacena el usuario en la variable de sesion
+    // Establecer la conexión
+    $conexion = Conexion::Conectar();
 
-include('db.php'); //incluye el archivo de conexion a la base de datos
+    // Consulta SQL con placeholders para evitar inyecciones SQL
+    $query = "SELECT * FROM users WHERE users_email = :usuario AND password_hash = :password";
+    $stmt = $conexion->prepare($query);
+    $stmt->bindParam(':usuario', $usuario, PDO::PARAM_STR);
+    $stmt->bindParam(':password', $password, PDO::PARAM_STR);
+    
+    // Ejecutar la consulta
+    $stmt->execute();
 
-$consulta = "SELECT * FROM users WHERE users_email = '$usuario' and password_hash = '$password'";
-$resultado = mysqli_query($conexion, $consulta); //ejecuta la consulta  
+    // Verificar si se encontró un resultado
+    if ($stmt->rowCount() > 0) {
+        // Usuario y contraseña válidos, redirigir a index.php
+        header("Location: index.php");
+        exit(); // Importante para detener la ejecución del script
+    } else {
+        // Usuario y/o contraseña incorrectos, mostrar alerta en JS
+        echo "<script>alert('Usuario y/o contraseña incorrectos'); window.location.href = 'login.php';</script>";
+    }
 
-$filas = mysqli_num_rows($resultado); //devuelve el numero de filas afectadas
-
-if ($filas) {
-    header("location:index.php"); //si el usuario y la contraseña son correctos redirecciona a index.php
-} else {
-    ?>
-    <?php
-    include("login.php");
-    ?>
-    <h1 class="bad">ERROR en la autenticacion</h1>
-    <?php
+} catch (Exception $e) {
+    // Capturar cualquier error y mostrar un mensaje apropiado
+    error_log("Error en el inicio de sesión: " . $e->getMessage());
+    echo "<script>alert('Ocurrió un problema durante el inicio de sesión. Por favor, inténtelo de nuevo más tarde.'); window.location.href = 'login.php';</script>";
 }
-mysqli_free_result($resultado);
-mysqli_close($conexion);
+?>
