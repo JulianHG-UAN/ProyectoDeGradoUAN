@@ -181,8 +181,38 @@ $("#formEmpleados").submit(function(e){
             employee_HorasLaborales = data[0].employee_HorasLaborales;
             employee_TipoSalario = data[0].employee_TipoSalario;
 
+            console.log([
+                employee_Id, 
+                company_id, 
+                employee_Name, 
+                employee_Secondname, 
+                employee_Lastname, 
+                employee_Secondlastname, 
+                employee_Genero, 
+                employee_Birthdate, 
+                employee_EstadoCivil, 
+                employee_UltimoNivelEstudio, 
+                employee_Ocupacion, 
+                employee_ResidenciaDepartamento, 
+                employee_ResidenciaCuidad, 
+                employee_EstratoSocial, 
+                employee_TipoVivienda, 
+                employee_PersonasACargo, 
+                employee_TrabajoDepartamento, 
+                employee_TrabajoCuidad, 
+                employee_TiempoEnEmpresa, 
+                employee_NombreCargo, 
+                employee_TipoCargo, 
+                employee_TiempoEnCargo, 
+                employee_NombreArea, 
+                employee_TipoContrato, 
+                employee_HorasLaborales, 
+                employee_TipoSalario
+            ]);
+            
+
             if(opcion == 1){tablaEmpleados.row.add([employee_Id, company_id, employee_Name, employee_Secondname, employee_Lastname, employee_Secondlastname, employee_Genero, employee_Birthdate, employee_EstadoCivil, employee_UltimoNivelEstudio, employee_Ocupacion, employee_ResidenciaDepartamento, employee_ResidenciaCuidad, employee_EstratoSocial, employee_TipoVivienda, employee_PersonasACargo, employee_TrabajoDepartamento, employee_TrabajoCuidad, employee_TiempoEnEmpresa, employee_NombreCargo, employee_TipoCargo, employee_TiempoEnCargo, employee_NombreArea, employee_TipoContrato, employee_HorasLaborales, employee_TipoSalario]).draw();}
-            else{tablaEmpleados.row(fila).data([employee_Id, company_id, employee_Name, employee_Secondname, employee_Lastname, employee_Secondlastname, employee_Genero, employee_Birthdate, employee_EstadoCivil, employee_UltimoNivelEstudio, employee_Ocupacion, employee_ResidenciaDepartamento, employee_ResidenciaCuidad, employee_EstratoSocial, employee_TipoVivienda, employee_PersonasACargo, employee_TrabajoDepartamento, employee_TrabajoCuidad, employee_TiempoEnEmpresa, employee_NombreCargo, employee_TipoCargo, employee_TiempoEnCargo, employee_NombreArea, employee_TipoContrato, employee_HorasLaborales, employee_TipoSalario]).draw();}            
+            else{tablaEmpleados.row(fila).data([employee_Id, company_id, employee_Name, employee_Secondname, employee_Lastname, employee_Secondlastname, employee_Genero, employee_Birthdate, employee_EstadoCivil, employee_UltimoNivelEstudio, employee_Ocupacion, employee_ResidenciaDepartamento, employee_ResidenciaCuidad, employee_EstratoSocial, employee_TipoVivienda, employee_PersonasACargo, employee_TrabajoDepartamento, employee_TrabajoCuidad, employee_TiempoEnEmpresa, employee_NombreCargo, employee_TipoCargo, employee_TiempoEnCargo, employee_NombreArea, employee_TipoContrato, employee_HorasLaborales, employee_TipoSalario]).draw();}
         }     
     });
     $("#modalCRUD").modal("hide");

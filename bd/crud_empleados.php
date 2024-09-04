@@ -32,47 +32,47 @@ $employee_HorasLaborales = (isset($_POST['employee_HorasLaborales'])) ? $_POST['
 $employee_TipoSalario = (isset($_POST['employee_TipoSalario'])) ? $_POST['employee_TipoSalario'] : '';
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
 
-switch($opcion){
-    case 1: //alta
-        $consulta = "INSERT INTO employees (company_id, employee_Name, employee_Secondname, employee_Lastname, employee_Secondlastname, employee_Genero, employee_Birthdate, employee_EstadoCivil, employee_UltimoNivelEstudio, employee_Ocupacion, employee_ResidenciaDepartamento, employee_ResidenciaCuidad, employee_EstratoSocial, employee_TipoVivienda, employee_PersonasACargo, employee_TrabajoDepartamento, employee_TrabajoCuidad, employee_TiempoEnEmpresa, employee_NombreCargo, employee_TipoCargo, employee_TiempoEnCargo, employee_NombreArea, employee_TipoContrato, employee_HorasLaborales, employee_TipoSalario) 
-        VALUES('$company_id', '$employee_Name', '$employee_Secondname', '$employee_Lastname', '$employee_Secondlastname', '$employee_Genero', '$employee_Birthdate', '$employee_EstadoCivil', '$employee_UltimoNivelEstudio', '$employee_Ocupacion', '$employee_ResidenciaDepartamento', '$employee_ResidenciaCuidad', '$employee_EstratoSocial', '$employee_TipoVivienda', '$employee_PersonasACargo', '$employee_TrabajoDepartamento', '$employee_TrabajoCuidad', '$employee_TiempoEnEmpresa', '$employee_NombreCargo', '$employee_TipoCargo', '$employee_TiempoEnCargo', '$employee_NombreArea', '$employee_TipoContrato', '$employee_HorasLaborales', '$employee_TipoSalario')";
+try {
+    switch($opcion){
+        case 1: //alta
+            $consulta = "INSERT INTO employees (company_id, employee_Name, employee_Secondname, employee_Lastname, employee_Secondlastname, employee_Genero, employee_Birthdate, employee_EstadoCivil, employee_UltimoNivelEstudio, employee_Ocupacion, employee_ResidenciaDepartamento, employee_ResidenciaCuidad, employee_EstratoSocial, employee_TipoVivienda, employee_PersonasACargo, employee_TrabajoDepartamento, employee_TrabajoCuidad, employee_TiempoEnEmpresa, employee_NombreCargo, employee_TipoCargo, employee_TiempoEnCargo, employee_NombreArea, employee_TipoContrato, employee_HorasLaborales, employee_TipoSalario) 
+            VALUES('$company_id', '$employee_Name', '$employee_Secondname', '$employee_Lastname', '$employee_Secondlastname', '$employee_Genero', '$employee_Birthdate', '$employee_EstadoCivil', '$employee_UltimoNivelEstudio', '$employee_Ocupacion', '$employee_ResidenciaDepartamento', '$employee_ResidenciaCuidad', '$employee_EstratoSocial', '$employee_TipoVivienda', '$employee_PersonasACargo', '$employee_TrabajoDepartamento', '$employee_TrabajoCuidad', '$employee_TiempoEnEmpresa', '$employee_NombreCargo', '$employee_TipoCargo', '$employee_TiempoEnCargo', '$employee_NombreArea', '$employee_TipoContrato', '$employee_HorasLaborales', '$employee_TipoSalario')";
 
-        try {
             $resultado = $conexion->prepare($consulta);
-            $ejecutado = $resultado->execute();
-        } catch (PDOException $e) {
-            error_log("Error en la consulta SQL: " . $e->getMessage());
-            echo json_encode(["error" => "Error en la base de datos"]);
-            exit();
-        }
+            $resultado->execute();
+            
+            $consulta = "SELECT * FROM employees ORDER BY employee_Id DESC LIMIT 1";
+            $resultado = $conexion->prepare($consulta);
+            $resultado->execute();
+            $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break;
 
-        $consulta = "SELECT employee_Id, company_id, employee_Name, employee_Lastname, employee_Genero, employee_Birthdate, employee_EstadoCivil, employee_UltimoNivelEstudio, employee_Ocupacion, employee_ResidenciaDepartamento, employee_ResidenciaCuidad, employee_EstratoSocial, employee_TipoVivienda, employee_PersonasACargo, employee_TrabajoDepartamento, employee_TrabajoCuidad, employee_TiempoEnEmpresa, employee_NombreCargo, employee_TipoCargo, employee_TiempoEnCargo, employee_NombreArea, employee_TipoContrato, employee_HorasLaborales, employee_TipoSalario FROM employees ORDER BY employee_Id DESC LIMIT 1";
-        $resultado = $conexion->prepare($consulta);
-        $resultado->execute();
-        $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
-        break;
+        case 2: //modificación
+            $consulta = "UPDATE employees SET company_id = '$company_id', employee_Name = '$employee_Name', employee_Secondname = '$employee_Secondname', employee_Lastname = '$employee_Lastname', employee_Secondlastname = '$employee_Secondlastname', employee_Genero = '$employee_Genero', employee_Birthdate = '$employee_Birthdate', employee_EstadoCivil = '$employee_EstadoCivil', employee_UltimoNivelEstudio = '$employee_UltimoNivelEstudio', employee_Ocupacion = '$employee_Ocupacion', employee_ResidenciaDepartamento = '$employee_ResidenciaDepartamento', employee_ResidenciaCuidad = '$employee_ResidenciaCuidad', employee_EstratoSocial = '$employee_EstratoSocial', employee_TipoVivienda = '$employee_TipoVivienda', employee_PersonasACargo = '$employee_PersonasACargo', employee_TrabajoDepartamento = '$employee_TrabajoDepartamento', employee_TrabajoCuidad = '$employee_TrabajoCuidad', employee_TiempoEnEmpresa = '$employee_TiempoEnEmpresa', employee_NombreCargo = '$employee_NombreCargo', employee_TipoCargo = '$employee_TipoCargo', employee_TiempoEnCargo = '$employee_TiempoEnCargo', employee_NombreArea = '$employee_NombreArea', employee_TipoContrato = '$employee_TipoContrato', employee_HorasLaborales = '$employee_HorasLaborales', employee_TipoSalario = '$employee_TipoSalario' WHERE employee_Id = '$employee_Id'";		
+            
+            $resultado = $conexion->prepare($consulta);
+            $resultado->execute();        
+            
+            $consulta = "SELECT * FROM employees WHERE employee_Id='$employee_Id'";       
+            $resultado = $conexion->prepare($consulta);
+            $resultado->execute();
+            $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break;   
 
-    case 2: //modificación
-        $consulta = "UPDATE employees SET company_id = '$company_id', employee_Name = '$employee_Name', employee_Secondname = '$employee_Secondname', employee_Lastname = '$employee_Lastname', employee_Secondlastname = '$employee_Secondlastname', employee_Genero = '$employee_Genero', employee_Birthdate = '$employee_Birthdate', employee_EstadoCivil = '$employee_EstadoCivil', employee_UltimoNivelEstudio = '$employee_UltimoNivelEstudio', employee_Ocupacion = '$employee_Ocupacion', employee_ResidenciaDepartamento = '$employee_ResidenciaDepartamento', employee_ResidenciaCuidad = '$employee_ResidenciaCuidad', employee_EstratoSocial = '$employee_EstratoSocial', employee_TipoVivienda = '$employee_TipoVivienda', employee_PersonasACargo = '$employee_PersonasACargo', employee_TrabajoDepartamento = '$employee_TrabajoDepartamento', employee_TrabajoCuidad = '$employee_TrabajoCuidad', employee_TiempoEnEmpresa = '$employee_TiempoEnEmpresa', employee_NombreCargo = '$employee_NombreCargo', employee_TipoCargo = '$employee_TipoCargo', employee_TiempoEnCargo = '$employee_TiempoEnCargo', employee_NombreArea = '$employee_NombreArea', employee_TipoContrato = '$employee_TipoContrato', employee_HorasLaborales = '$employee_HorasLaborales', employee_TipoSalario = '$employee_TipoSalario' WHERE employee_Id = '$employee_Id'";		
-        
-        $resultado = $conexion->prepare($consulta);
-        $resultado->execute();        
-        
-        $consulta = "SELECT employee_Id, company_id, employee_Name, employee_Lastname, employee_Genero, employee_Birthdate, employee_EstadoCivil, employee_UltimoNivelEstudio, employee_Ocupacion, employee_ResidenciaDepartamento, employee_ResidenciaCuidad, employee_EstratoSocial, employee_TipoVivienda, employee_PersonasACargo, employee_TrabajoDepartamento, employee_TrabajoCuidad, employee_TiempoEnEmpresa, employee_NombreCargo, employee_TipoCargo, employee_TiempoEnCargo, employee_NombreArea, employee_TipoContrato, employee_HorasLaborales, employee_TipoSalario FROM employees WHERE employee_Id='$employee_Id'";       
-        $resultado = $conexion->prepare($consulta);
-        $resultado->execute();
-        $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
-        break;   
-
-    case 3://baja
-        $consulta = "DELETE FROM employees WHERE employee_Id='$employee_Id' ";		
-        $resultado = $conexion->prepare($consulta);
-        $resultado->execute();
-        $data = ["message" => "Empleado eliminado con éxito"];
-        break;
+        case 3://baja
+            $consulta = "DELETE FROM employees WHERE employee_Id='$employee_Id' ";		
+            $resultado = $conexion->prepare($consulta);
+            $resultado->execute();
+            $data = ["message" => "Empleado eliminado con éxito"];
+            break;
+    }
+    
+    print json_encode($data, JSON_UNESCAPED_UNICODE);
+    
+} catch (PDOException $e) {
+    error_log("Error en la consulta SQL: " . $e->getMessage());
+    echo json_encode(["error" => "Error en la base de datos"]);
+} finally {
+    $conexion = NULL;
 }
-
-var_dump($data);
-print json_encode($data, JSON_UNESCAPED_UNICODE);
-$conexion = NULL;
 ?>
