@@ -35,10 +35,16 @@ $("#btnNuevo").click(function(){
 
 var fila; //capturar la fila para editar o borrar el registro
 
-//botón EDITAR    
 $(document).on("click", ".btnEditar", function(){
     fila = $(this).closest("tr");
-    employee_Id = parseInt(fila.find('td:eq(0)').text());
+    employee_Id = parseInt(fila.find('td:eq(0)').text()) || 0; // Usa un valor por defecto si es undefined
+    
+    if (!employee_Id) {
+        console.error("No se pudo obtener el ID del empleado.");
+        return;
+    }
+    
+    opcion = 2; //editar
     company_id = parseInt(fila.find('td:eq(1)').text());
     employee_Name = fila.find('td:eq(2)').text();
     employee_Secondname = fila.find('td:eq(3)').text();
@@ -90,17 +96,15 @@ $(document).on("click", ".btnEditar", function(){
     $("#employee_TipoContrato").val(employee_TipoContrato);
     $("#employee_HorasLaborales").val(employee_HorasLaborales);
     $("#employee_TipoSalario").val(employee_TipoSalario);
-    opcion = 2; //editar
-    
+        
     $(".modal-header").css("background-color", "#007bff");
     $(".modal-header").css("color", "white");
     $(".modal-title").text("Editar Empleado");            
-    $("#modalCRUD").modal("show");  
-    
+    $("#modalCRUD").modal("show");
 });
 
 //botón BORRAR
-$(document).on("click", ".btnBorrar", function(){    
+$(document).on("click", ".btnBorrar", function(){
     fila = $(this);
     id = parseInt($(this).closest("tr").find('td:eq(0)').text());
     opcion = 3 //borrar
@@ -121,7 +125,7 @@ $(document).on("click", ".btnBorrar", function(){
 // Crear empleado
 $("#formEmpleados").submit(function(e){
     e.preventDefault();
-    employee_Id = $.trim($("#employee_Id").val());
+    employee_Id = $.trim($("#employee_Id").val()) || employee_Id;
     company_id = $.trim($("#company_id").val());
     employee_Name = $.trim($("#employee_Name").val());
     employee_Secondname = $.trim($("#employee_Secondname").val());
@@ -153,7 +157,11 @@ $("#formEmpleados").submit(function(e){
         dataType: "json",
         data: {employee_Id:employee_Id, company_id:company_id, employee_Name:employee_Name, employee_Secondname:employee_Secondname, employee_Lastname:employee_Lastname, employee_Secondlastname:employee_Secondlastname, employee_Genero:employee_Genero, employee_Birthdate:employee_Birthdate, employee_EstadoCivil:employee_EstadoCivil, employee_UltimoNivelEstudio:employee_UltimoNivelEstudio, employee_Ocupacion:employee_Ocupacion, employee_ResidenciaDepartamento:employee_ResidenciaDepartamento, employee_ResidenciaCuidad:employee_ResidenciaCuidad, employee_EstratoSocial:employee_EstratoSocial, employee_TipoVivienda:employee_TipoVivienda, employee_PersonasACargo:employee_PersonasACargo, employee_TrabajoDepartamento:employee_TrabajoDepartamento, employee_TrabajoCuidad:employee_TrabajoCuidad, employee_TiempoEnEmpresa:employee_TiempoEnEmpresa, employee_NombreCargo:employee_NombreCargo, employee_TipoCargo:employee_TipoCargo, employee_TiempoEnCargo:employee_TiempoEnCargo, employee_NombreArea:employee_NombreArea, employee_TipoContrato:employee_TipoContrato, employee_HorasLaborales:employee_HorasLaborales, employee_TipoSalario:employee_TipoSalario, opcion:opcion},
         success: function(data){  
-            console.log(data);
+            if (!data || !data[0]) {
+                console.error("Los datos recibidos están vacíos o no tienen el formato esperado.");
+                return;
+            }
+            console.log("Respuesta recibida en Alta: ", data);
             employee_Id = data[0].employee_Id;
             company_id = data[0].company_id;
             employee_Name = data[0].employee_Name;
@@ -181,35 +189,7 @@ $("#formEmpleados").submit(function(e){
             employee_HorasLaborales = data[0].employee_HorasLaborales;
             employee_TipoSalario = data[0].employee_TipoSalario;
 
-            console.log([
-                employee_Id, 
-                company_id, 
-                employee_Name, 
-                employee_Secondname, 
-                employee_Lastname, 
-                employee_Secondlastname, 
-                employee_Genero, 
-                employee_Birthdate, 
-                employee_EstadoCivil, 
-                employee_UltimoNivelEstudio, 
-                employee_Ocupacion, 
-                employee_ResidenciaDepartamento, 
-                employee_ResidenciaCuidad, 
-                employee_EstratoSocial, 
-                employee_TipoVivienda, 
-                employee_PersonasACargo, 
-                employee_TrabajoDepartamento, 
-                employee_TrabajoCuidad, 
-                employee_TiempoEnEmpresa, 
-                employee_NombreCargo, 
-                employee_TipoCargo, 
-                employee_TiempoEnCargo, 
-                employee_NombreArea, 
-                employee_TipoContrato, 
-                employee_HorasLaborales, 
-                employee_TipoSalario
-            ]);
-            
+
 
             if(opcion == 1){tablaEmpleados.row.add([employee_Id, company_id, employee_Name, employee_Secondname, employee_Lastname, employee_Secondlastname, employee_Genero, employee_Birthdate, employee_EstadoCivil, employee_UltimoNivelEstudio, employee_Ocupacion, employee_ResidenciaDepartamento, employee_ResidenciaCuidad, employee_EstratoSocial, employee_TipoVivienda, employee_PersonasACargo, employee_TrabajoDepartamento, employee_TrabajoCuidad, employee_TiempoEnEmpresa, employee_NombreCargo, employee_TipoCargo, employee_TiempoEnCargo, employee_NombreArea, employee_TipoContrato, employee_HorasLaborales, employee_TipoSalario]).draw();}
             else{tablaEmpleados.row(fila).data([employee_Id, company_id, employee_Name, employee_Secondname, employee_Lastname, employee_Secondlastname, employee_Genero, employee_Birthdate, employee_EstadoCivil, employee_UltimoNivelEstudio, employee_Ocupacion, employee_ResidenciaDepartamento, employee_ResidenciaCuidad, employee_EstratoSocial, employee_TipoVivienda, employee_PersonasACargo, employee_TrabajoDepartamento, employee_TrabajoCuidad, employee_TiempoEnEmpresa, employee_NombreCargo, employee_TipoCargo, employee_TiempoEnCargo, employee_NombreArea, employee_TipoContrato, employee_HorasLaborales, employee_TipoSalario]).draw();}
