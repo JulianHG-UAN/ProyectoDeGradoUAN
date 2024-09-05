@@ -70,7 +70,7 @@ $(document).on("click", ".btnEditar", function(){
     employee_TipoContrato = parseInt(fila.find('td:eq(23)').text());
     employee_HorasLaborales = parseInt(fila.find('td:eq(24)').text());
     employee_TipoSalario = parseInt(fila.find('td:eq(25)').text());
-    
+
     $("#company_id").val(company_id);
     $("#employee_Name").val(employee_Name);
     $("#employee_Secondname").val(employee_Secondname);
@@ -188,8 +188,6 @@ $("#formEmpleados").submit(function(e){
             employee_TipoContrato = data[0].employee_TipoContrato;
             employee_HorasLaborales = data[0].employee_HorasLaborales;
             employee_TipoSalario = data[0].employee_TipoSalario;
-
-
 
             if(opcion == 1){tablaEmpleados.row.add([employee_Id, company_id, employee_Name, employee_Secondname, employee_Lastname, employee_Secondlastname, employee_Genero, employee_Birthdate, employee_EstadoCivil, employee_UltimoNivelEstudio, employee_Ocupacion, employee_ResidenciaDepartamento, employee_ResidenciaCuidad, employee_EstratoSocial, employee_TipoVivienda, employee_PersonasACargo, employee_TrabajoDepartamento, employee_TrabajoCuidad, employee_TiempoEnEmpresa, employee_NombreCargo, employee_TipoCargo, employee_TiempoEnCargo, employee_NombreArea, employee_TipoContrato, employee_HorasLaborales, employee_TipoSalario]).draw();}
             else{tablaEmpleados.row(fila).data([employee_Id, company_id, employee_Name, employee_Secondname, employee_Lastname, employee_Secondlastname, employee_Genero, employee_Birthdate, employee_EstadoCivil, employee_UltimoNivelEstudio, employee_Ocupacion, employee_ResidenciaDepartamento, employee_ResidenciaCuidad, employee_EstratoSocial, employee_TipoVivienda, employee_PersonasACargo, employee_TrabajoDepartamento, employee_TrabajoCuidad, employee_TiempoEnEmpresa, employee_NombreCargo, employee_TipoCargo, employee_TiempoEnCargo, employee_NombreArea, employee_TipoContrato, employee_HorasLaborales, employee_TipoSalario]).draw();}
