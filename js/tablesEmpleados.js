@@ -106,15 +106,15 @@ $(document).on("click", ".btnEditar", function(){
 //botón BORRAR
 $(document).on("click", ".btnBorrar", function(){
     fila = $(this);
-    id = parseInt($(this).closest("tr").find('td:eq(0)').text());
     opcion = 3 //borrar
-    var respuesta = confirm("¿Está seguro de eliminar el registro: "+id+"?");
+    employee_Id = parseInt($(this).closest("tr").find('td:eq(0)').text());
+    var respuesta = confirm("¿Está seguro de eliminar el registro: "+employee_Id+"?");
     if(respuesta){
         $.ajax({
             url: "bd/crud_empleados.php",
             type: "POST",
             dataType: "json",
-            data: {opcion:opcion, id:id},
+            data: {employee_Id:employee_Id, opcion:opcion},
             success: function(){
                 tablaEmpleados.row(fila.parents('tr')).remove().draw();
             }

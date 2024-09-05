@@ -60,7 +60,8 @@ try {
             break;   
 
         case 3://baja
-            $consulta = "DELETE FROM employees WHERE employee_Id='$employee_Id' ";		
+            error_log("Employee ID a eliminar: $employee_Id");
+            $consulta = "DELETE FROM employees WHERE employee_Id='$employee_Id'";		
             $resultado = $conexion->prepare($consulta);
             $resultado->execute();
             $data = ["message" => "Empleado eliminado con éxito"];
