@@ -9,32 +9,7 @@ $conexion = $objeto->Conectar();
 // Consulta 1: Obtener datos de 'employees'
 $consulta1 = "
     SELECT 
-        e.employee_Id,
-        e.company_id,
-        e.employee_Name,
-        e.employee_Secondname,
-        e.employee_Lastname,
-        e.employee_Secondlastname,
-        e.employee_Genero,
-        e.employee_Birthdate,
-        e.employee_EstadoCivil,
-        e.employee_UltimoNivelEstudio,
-        e.employee_Ocupacion,
-        e.employee_ResidenciaDepartamento,
-        e.employee_ResidenciaCuidad,
-        e.employee_EstratoSocial,
-        e.employee_TipoVivienda,
-        e.employee_PersonasACargo,
-        e.employee_TrabajoDepartamento,
-        e.employee_TrabajoCuidad,
-        e.employee_TiempoEnEmpresa,
-        e.employee_NombreCargo,
-        e.employee_TipoCargo,
-        e.employee_TiempoEnCargo,
-        e.employee_NombreArea,
-        e.employee_TipoContrato,
-        e.employee_HorasLaborales,
-        e.employee_TipoSalario,
+        e.*,
         c.company_name
     FROM employees e
     LEFT JOIN companies c ON e.company_id = c.company_id
