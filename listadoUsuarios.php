@@ -6,7 +6,7 @@ include_once './bd/conexion.php';
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 
-$consulta = "SELECT * FROM employees";
+$consulta = "SELECT * FROM employees, companies";
 $resultado = $conexion->prepare($consulta);
 $resultado->execute();
 $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
@@ -30,32 +30,32 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                         <table id="tablaEmpleados" class="table table-striped table-bordered table-condensed" style="width:100%">
                         <thead class="text-center">
                             <tr>
-                                <th>employee_Id</th>
-                                <th>company_id</th>
-                                <th>employee_Name</th>
-                                <th>employee_Secondname</th>
-                                <th>employee_Lastname</th>
-                                <th>employee_Secondlastname</th>
-                                <th>employee_Genero</th>
-                                <th>employee_Birthdate</th>
-                                <th>employee_EstadoCivil</th>
-                                <th>employee_UltimoNivelEstudio</th>
-                                <th>employee_Ocupacion</th>
-                                <th>employee_ResidenciaDepartamento</th>
-                                <th>employee_ResidenciaCuidad</th>
-                                <th>employee_EstratoSocial</th>
-                                <th>employee_TipoVivienda</th>
-                                <th>employee_PersonasACargo</th>
-                                <th>employee_TrabajoDepartamento</th>
-                                <th>employee_TrabajoCuidad</th>
-                                <th>employee_TiempoEnEmpresa</th>
-                                <th>employee_NombreCargo</th>
-                                <th>employee_TipoCargo</th>
-                                <th>employee_TiempoEnCargo</th>
-                                <th>employee_NombreArea</th>
-                                <th>employee_TipoContrato</th>
-                                <th>employee_HorasLaborales</th>
-                                <th>employee_TipoSalario</th>
+                                <th>Id del empleado</th>
+                                <th>Id de la compañia</th>
+                                <th>Nombre</th>
+                                <th>Segundo nombre</th>
+                                <th>Apellido</th>
+                                <th>Segundo apellido</th>
+                                <th>Género</th>
+                                <th>Fecha de nacimiento</th>
+                                <th>Estado civil</th>
+                                <th>Último nivel de estudio</th>
+                                <th>Ocupación</th>
+                                <th>Departamento de residencia</th>
+                                <th>Ciudad de residencia</th>
+                                <th>Estrato social</th>
+                                <th>Tipo de vivienda</th>
+                                <th>Personas a cargo</th>
+                                <th>Departamento de trabajo</th>
+                                <th>Ciudad de trabajo</th>
+                                <th>Tiempo en la empresa (meses)</th>
+                                <th>Nombre del cargo</th>
+                                <th>Tipo de cargo</th>
+                                <th>Tiempo en el cargo (meses)</th>
+                                <th>Nombre del área</th>
+                                <th>Tipo de contrato</th>
+                                <th>Horas laborales</th>
+                                <th>Tipo de salario</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
