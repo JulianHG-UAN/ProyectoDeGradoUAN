@@ -6,11 +6,62 @@ include_once './bd/conexion.php';
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 
-$consulta = "SELECT * FROM employees, companies";
-$resultado = $conexion->prepare($consulta);
-$resultado->execute();
-$data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+// Consulta 1: Obtener datos de 'employees'
+$consulta1 = "
+    SELECT 
+        e.employee_Id,
+        e.company_id,
+        e.employee_Name,
+        e.employee_Secondname,
+        e.employee_Lastname,
+        e.employee_Secondlastname,
+        e.employee_Genero,
+        e.employee_Birthdate,
+        e.employee_EstadoCivil,
+        e.employee_UltimoNivelEstudio,
+        e.employee_Ocupacion,
+        e.employee_ResidenciaDepartamento,
+        e.employee_ResidenciaCuidad,
+        e.employee_EstratoSocial,
+        e.employee_TipoVivienda,
+        e.employee_PersonasACargo,
+        e.employee_TrabajoDepartamento,
+        e.employee_TrabajoCuidad,
+        e.employee_TiempoEnEmpresa,
+        e.employee_NombreCargo,
+        e.employee_TipoCargo,
+        e.employee_TiempoEnCargo,
+        e.employee_NombreArea,
+        e.employee_TipoContrato,
+        e.employee_HorasLaborales,
+        e.employee_TipoSalario,
+        c.company_name
+    FROM employees e
+    LEFT JOIN companies c ON e.company_id = c.company_id
+    LEFT JOIN opciones_genero g ON e.employee_Genero = g.id
+    LEFT JOIN opciones_estado_civil ec ON e.employee_EstadoCivil = ec.id
+    LEFT JOIN opciones_nivel_estudio ne ON e.employee_UltimoNivelEstudio = ne.id
+    LEFT JOIN opciones_departamento rd ON e.employee_ResidenciaDepartamento = rd.id
+    LEFT JOIN opciones_ciudad rc ON e.employee_ResidenciaCuidad = rc.id
+    LEFT JOIN opciones_estrato es ON e.employee_EstratoSocial = es.id
+    LEFT JOIN opciones_tipo_vivienda tv ON e.employee_TipoVivienda = tv.id
+    LEFT JOIN opciones_departamento td ON e.employee_TrabajoDepartamento = td.id
+    LEFT JOIN opciones_ciudad tc ON e.employee_TrabajoCuidad = tc.id
+    LEFT JOIN opciones_tipo_cargo tcg ON e.employee_TipoCargo = tcg.id
+    LEFT JOIN opciones_tipo_contrato tco ON e.employee_TipoContrato = tco.id
+    LEFT JOIN opciones_tipo_salario ts ON e.employee_TipoSalario = ts.id";
+$resultado1 = $conexion->prepare($consulta1);
+$resultado1->execute();
+$data = $resultado1->fetchAll(PDO::FETCH_ASSOC);
+
+// Consulta 2: Obtener datos de otra tabla, por ejemplo, 'departments'
+$consulta2 = "SELECT * FROM companies";
+$resultado2 = $conexion->prepare($consulta2);
+$resultado2->execute();
+$companies = $resultado2->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
+
 
 <!-- INICIO contenido principal -->
 
@@ -61,11 +112,11 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                         </thead>
                         <tbody>
                             <?php                            
-                            foreach($data as $dat) {                                                        
+                            foreach($data as $dat) {
                             ?>
                             <tr>
                                 <td><?php echo $dat['employee_Id'] ?></td>
-                                <td><?php echo $dat['company_id'] ?></td>
+                                <td><?php echo $dat['company_name'] ?></td>
                                 <td><?php echo $dat['employee_Name'] ?></td>
                                 <td><?php echo $dat['employee_Secondname'] ?></td>
                                 <td><?php echo $dat['employee_Lastname'] ?></td>
@@ -113,9 +164,15 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
             </div>
         <form id="formEmpleados">    
             <div class="modal-body">
+                <input type="hidden" id="employee_Id" name="employee_Id" value="<?= $employee['employee_Id'] ?? '' ?>">
+
                 <div class="form-group">
                 <label for="company_id" class="col-form-label">Id de la compañia:</label>
-                <input type="number" class="form-control" id="company_id">
+                <select class="form-control" id="company_id" name="company_id">
+                    <?php foreach ($companies as $company): ?>
+                        <option value="<?= $company['company_id'] ?>"><?= $company['company_name'] ?></option>
+                    <?php endforeach; ?>
+                </select>
                 </div>
 
                 <div class="form-group">

@@ -126,6 +126,8 @@ $(document).on("click", ".btnBorrar", function(){
 $("#formEmpleados").submit(function(e){
     e.preventDefault();
     employee_Id = $.trim($("#employee_Id").val()) || employee_Id;
+    console.log("Employee ID:", employee_Id);  // Depuración
+    
     company_id = $.trim($("#company_id").val());
     employee_Name = $.trim($("#employee_Name").val());
     employee_Secondname = $.trim($("#employee_Secondname").val());
@@ -151,6 +153,10 @@ $("#formEmpleados").submit(function(e){
     employee_TipoContrato = $.trim($("#employee_TipoContrato").val());
     employee_HorasLaborales = $.trim($("#employee_HorasLaborales").val());
     employee_TipoSalario = $.trim($("#employee_TipoSalario").val());
+
+    console.log("Datos a enviar: ", employee_Id, company_id, employee_Name, employee_Secondname, employee_Lastname, employee_Secondlastname, employee_Genero, employee_Birthdate, employee_EstadoCivil, employee_UltimoNivelEstudio, employee_Ocupacion, employee_ResidenciaDepartamento, employee_ResidenciaCuidad, employee_EstratoSocial, employee_TipoVivienda, employee_PersonasACargo, employee_TrabajoDepartamento, employee_TrabajoCuidad, employee_TiempoEnEmpresa, employee_NombreCargo, employee_TipoCargo, employee_TiempoEnCargo, employee_NombreArea, employee_TipoContrato, employee_HorasLaborales, employee_TipoSalario, opcion);
+
+
     $.ajax({
         url: "bd/crud_empleados.php",
         type: "POST",
@@ -159,6 +165,7 @@ $("#formEmpleados").submit(function(e){
         success: function(data){  
             if (!data || !data[0]) {
                 console.error("Los datos recibidos están vacíos o no tienen el formato esperado.");
+                console.log("Respuesta recibida en Alta: ", data);
                 return;
             }
             console.log("Respuesta recibida en Alta: ", data);
