@@ -125,9 +125,9 @@ $(document).on("click", ".btnBorrar", function(){
 // Crear empleado
 $("#formEmpleados").submit(function(e){
     e.preventDefault();
-    employee_Id = $.trim($("#employee_Id").val()) || employee_Id;
-    console.log("Employee ID:", employee_Id);  // Depuración
     
+    // Recopilar datos del formulario
+    employee_Id = $.trim($("#employee_Id").val()) || employee_Id;
     company_id = $.trim($("#company_id").val());
     employee_Name = $.trim($("#employee_Name").val());
     employee_Secondname = $.trim($("#employee_Secondname").val());
@@ -154,52 +154,114 @@ $("#formEmpleados").submit(function(e){
     employee_HorasLaborales = $.trim($("#employee_HorasLaborales").val());
     employee_TipoSalario = $.trim($("#employee_TipoSalario").val());
 
-    console.log("Datos a enviar: ", employee_Id, company_id, employee_Name, employee_Secondname, employee_Lastname, employee_Secondlastname, employee_Genero, employee_Birthdate, employee_EstadoCivil, employee_UltimoNivelEstudio, employee_Ocupacion, employee_ResidenciaDepartamento, employee_ResidenciaCuidad, employee_EstratoSocial, employee_TipoVivienda, employee_PersonasACargo, employee_TrabajoDepartamento, employee_TrabajoCuidad, employee_TiempoEnEmpresa, employee_NombreCargo, employee_TipoCargo, employee_TiempoEnCargo, employee_NombreArea, employee_TipoContrato, employee_HorasLaborales, employee_TipoSalario, opcion);
-
-
+    // Enviar los datos mediante AJAX
     $.ajax({
         url: "bd/crud_empleados.php",
         type: "POST",
         dataType: "json",
-        data: {employee_Id:employee_Id, company_id:company_id, employee_Name:employee_Name, employee_Secondname:employee_Secondname, employee_Lastname:employee_Lastname, employee_Secondlastname:employee_Secondlastname, employee_Genero:employee_Genero, employee_Birthdate:employee_Birthdate, employee_EstadoCivil:employee_EstadoCivil, employee_UltimoNivelEstudio:employee_UltimoNivelEstudio, employee_Ocupacion:employee_Ocupacion, employee_ResidenciaDepartamento:employee_ResidenciaDepartamento, employee_ResidenciaCuidad:employee_ResidenciaCuidad, employee_EstratoSocial:employee_EstratoSocial, employee_TipoVivienda:employee_TipoVivienda, employee_PersonasACargo:employee_PersonasACargo, employee_TrabajoDepartamento:employee_TrabajoDepartamento, employee_TrabajoCuidad:employee_TrabajoCuidad, employee_TiempoEnEmpresa:employee_TiempoEnEmpresa, employee_NombreCargo:employee_NombreCargo, employee_TipoCargo:employee_TipoCargo, employee_TiempoEnCargo:employee_TiempoEnCargo, employee_NombreArea:employee_NombreArea, employee_TipoContrato:employee_TipoContrato, employee_HorasLaborales:employee_HorasLaborales, employee_TipoSalario:employee_TipoSalario, opcion:opcion},
+        data: {
+            employee_Id: employee_Id,
+            company_id: company_id,
+            employee_Name: employee_Name,
+            employee_Secondname: employee_Secondname,
+            employee_Lastname: employee_Lastname,
+            employee_Secondlastname: employee_Secondlastname,
+            employee_Genero: employee_Genero,
+            employee_Birthdate: employee_Birthdate,
+            employee_EstadoCivil: employee_EstadoCivil,
+            employee_UltimoNivelEstudio: employee_UltimoNivelEstudio,
+            employee_Ocupacion: employee_Ocupacion,
+            employee_ResidenciaDepartamento: employee_ResidenciaDepartamento,
+            employee_ResidenciaCuidad: employee_ResidenciaCuidad,
+            employee_EstratoSocial: employee_EstratoSocial,
+            employee_TipoVivienda: employee_TipoVivienda,
+            employee_PersonasACargo: employee_PersonasACargo,
+            employee_TrabajoDepartamento: employee_TrabajoDepartamento,
+            employee_TrabajoCuidad: employee_TrabajoCuidad,
+            employee_TiempoEnEmpresa: employee_TiempoEnEmpresa,
+            employee_NombreCargo: employee_NombreCargo,
+            employee_TipoCargo: employee_TipoCargo,
+            employee_TiempoEnCargo: employee_TiempoEnCargo,
+            employee_NombreArea: employee_NombreArea,
+            employee_TipoContrato: employee_TipoContrato,
+            employee_HorasLaborales: employee_HorasLaborales,
+            employee_TipoSalario: employee_TipoSalario,
+            opcion: opcion
+        },
         success: function(data){  
             if (!data || !data[0]) {
                 console.error("Los datos recibidos están vacíos o no tienen el formato esperado.");
-                console.log("Respuesta recibida en Alta: ", data);
+                console.log("Fallido. Respuesta recibida en Alta: ", data);
                 return;
             }
-            console.log("Respuesta recibida en Alta: ", data);
-            employee_Id = data[0].employee_Id;
-            company_id = data[0].company_id;
-            employee_Name = data[0].employee_Name;
-            employee_Secondname = data[0].employee_Secondname;
-            employee_Lastname = data[0].employee_Lastname;
-            employee_Secondlastname = data[0].employee_Secondlastname;
-            employee_Genero = data[0].employee_Genero;
-            employee_Birthdate = data[0].employee_Birthdate;
-            employee_EstadoCivil = data[0].employee_EstadoCivil;
-            employee_UltimoNivelEstudio = data[0].employee_UltimoNivelEstudio;
-            employee_Ocupacion = data[0].employee_Ocupacion;
-            employee_ResidenciaDepartamento = data[0].employee_ResidenciaDepartamento;
-            employee_ResidenciaCuidad = data[0].employee_ResidenciaCuidad;
-            employee_EstratoSocial = data[0].employee_EstratoSocial;
-            employee_TipoVivienda = data[0].employee_TipoVivienda;
-            employee_PersonasACargo = data[0].employee_PersonasACargo;
-            employee_TrabajoDepartamento = data[0].employee_TrabajoDepartamento;
-            employee_TrabajoCuidad = data[0].employee_TrabajoCuidad;
-            employee_TiempoEnEmpresa = data[0].employee_TiempoEnEmpresa;
-            employee_NombreCargo = data[0].employee_NombreCargo;
-            employee_TipoCargo = data[0].employee_TipoCargo;
-            employee_TiempoEnCargo = data[0].employee_TiempoEnCargo;
-            employee_NombreArea = data[0].employee_NombreArea;
-            employee_TipoContrato = data[0].employee_TipoContrato;
-            employee_HorasLaborales = data[0].employee_HorasLaborales;
-            employee_TipoSalario = data[0].employee_TipoSalario;
+            
+            // Procesar la respuesta correctamente
+            console.log("Exitoso. Respuesta recibida en Alta: ", data);
 
-            if(opcion == 1){tablaEmpleados.row.add([employee_Id, company_id, employee_Name, employee_Secondname, employee_Lastname, employee_Secondlastname, employee_Genero, employee_Birthdate, employee_EstadoCivil, employee_UltimoNivelEstudio, employee_Ocupacion, employee_ResidenciaDepartamento, employee_ResidenciaCuidad, employee_EstratoSocial, employee_TipoVivienda, employee_PersonasACargo, employee_TrabajoDepartamento, employee_TrabajoCuidad, employee_TiempoEnEmpresa, employee_NombreCargo, employee_TipoCargo, employee_TiempoEnCargo, employee_NombreArea, employee_TipoContrato, employee_HorasLaborales, employee_TipoSalario]).draw();}
-            else{tablaEmpleados.row(fila).data([employee_Id, company_id, employee_Name, employee_Secondname, employee_Lastname, employee_Secondlastname, employee_Genero, employee_Birthdate, employee_EstadoCivil, employee_UltimoNivelEstudio, employee_Ocupacion, employee_ResidenciaDepartamento, employee_ResidenciaCuidad, employee_EstratoSocial, employee_TipoVivienda, employee_PersonasACargo, employee_TrabajoDepartamento, employee_TrabajoCuidad, employee_TiempoEnEmpresa, employee_NombreCargo, employee_TipoCargo, employee_TiempoEnCargo, employee_NombreArea, employee_TipoContrato, employee_HorasLaborales, employee_TipoSalario]).draw();}
-        }     
+            // Actualizar tabla con el nuevo empleado
+            if (opcion == 1) {
+                tablaEmpleados.row.add([
+                    data[0].employee_Id, 
+                    data[0].company_id, 
+                    data[0].employee_Name, 
+                    data[0].employee_Secondname,
+                    data[0].employee_Lastname,
+                    data[0].employee_Secondlastname,
+                    data[0].employee_Genero,
+                    data[0].employee_Birthdate,
+                    data[0].employee_EstadoCivil,
+                    data[0].employee_UltimoNivelEstudio,
+                    data[0].employee_Ocupacion,
+                    data[0].employee_ResidenciaDepartamento,
+                    data[0].employee_ResidenciaCuidad,
+                    data[0].employee_EstratoSocial,
+                    data[0].employee_TipoVivienda,
+                    data[0].employee_PersonasACargo,
+                    data[0].employee_TrabajoDepartamento,
+                    data[0].employee_TrabajoCuidad,
+                    data[0].employee_TiempoEnEmpresa,
+                    data[0].employee_NombreCargo,
+                    data[0].employee_TipoCargo,
+                    data[0].employee_TiempoEnCargo,
+                    data[0].employee_NombreArea,
+                    data[0].employee_TipoContrato,
+                    data[0].employee_HorasLaborales,
+                    data[0].employee_TipoSalario
+                ]).draw(false);  // Llama a draw(false) para evitar reinicializar la tabla completamente.
+            } else {
+                tablaEmpleados.row(fila).data([
+                    data[0].employee_Id, 
+                    data[0].company_id, 
+                    data[0].employee_Name, 
+                    data[0].employee_Secondname,
+                    data[0].employee_Lastname,
+                    data[0].employee_Secondlastname,
+                    data[0].employee_Genero,
+                    data[0].employee_Birthdate,
+                    data[0].employee_EstadoCivil,
+                    data[0].employee_UltimoNivelEstudio,
+                    data[0].employee_Ocupacion,
+                    data[0].employee_ResidenciaDepartamento,
+                    data[0].employee_ResidenciaCuidad,
+                    data[0].employee_EstratoSocial,
+                    data[0].employee_TipoVivienda,
+                    data[0].employee_PersonasACargo,
+                    data[0].employee_TrabajoDepartamento,
+                    data[0].employee_TrabajoCuidad,
+                    data[0].employee_TiempoEnEmpresa,
+                    data[0].employee_NombreCargo,
+                    data[0].employee_TipoCargo,
+                    data[0].employee_TiempoEnCargo,
+                    data[0].employee_NombreArea,
+                    data[0].employee_TipoContrato,
+                    data[0].employee_HorasLaborales,
+                    data[0].employee_TipoSalario
+                ]).draw(false);
+            }
+
+            // Cerrar el modal después de agregar el empleado
+            $("#modalCRUD").modal("hide");
+        }
     });
-    $("#modalCRUD").modal("hide");
 });
 });

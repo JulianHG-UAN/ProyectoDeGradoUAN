@@ -7,10 +7,34 @@ $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 
 // Consulta 1: Obtener datos de 'employees'
-$consulta1 = "
-    SELECT 
-        e.*,
-        c.company_name
+$consulta = "SELECT
+        e.employee_Id,
+        e.company_id,
+        e.employee_Name,
+        e.employee_Secondname,
+        e.employee_Lastname,
+        e.employee_Secondlastname,
+        e.employee_Genero,
+        e.employee_Birthdate,
+        e.employee_EstadoCivil,
+        e.employee_UltimoNivelEstudio,
+        e.employee_Ocupacion,
+        e.employee_ResidenciaDepartamento,
+        e.employee_ResidenciaCuidad,
+        e.employee_EstratoSocial,
+        e.employee_TipoVivienda,
+        e.employee_PersonasACargo,
+        e.employee_TrabajoDepartamento,
+        e.employee_TrabajoCuidad,
+        e.employee_TiempoEnEmpresa,
+        e.employee_NombreCargo,
+        e.employee_TipoCargo,
+        e.employee_TiempoEnCargo,
+        e.employee_NombreArea,
+        e.employee_TipoContrato,
+        e.employee_HorasLaborales,
+        e.employee_TipoSalario
+        --c.company_name
     FROM employees e
     LEFT JOIN companies c ON e.company_id = c.company_id
     LEFT JOIN opciones_genero g ON e.employee_Genero = g.id
@@ -25,9 +49,9 @@ $consulta1 = "
     LEFT JOIN opciones_tipo_cargo tcg ON e.employee_TipoCargo = tcg.id
     LEFT JOIN opciones_tipo_contrato tco ON e.employee_TipoContrato = tco.id
     LEFT JOIN opciones_tipo_salario ts ON e.employee_TipoSalario = ts.id";
-$resultado1 = $conexion->prepare($consulta1);
-$resultado1->execute();
-$data = $resultado1->fetchAll(PDO::FETCH_ASSOC);
+$resultado = $conexion->prepare($consulta);
+$resultado->execute();
+$data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 // Consulta 2: Obtener datos de otra tabla, por ejemplo, 'departments'
 $consulta2 = "SELECT * FROM companies";
@@ -91,7 +115,7 @@ $companies = $resultado2->fetchAll(PDO::FETCH_ASSOC);
                             ?>
                             <tr>
                                 <td><?php echo $dat['employee_Id'] ?></td>
-                                <td><?php echo $dat['company_name'] ?></td>
+                                <td><?php echo $dat['company_id'] ?></td>
                                 <td><?php echo $dat['employee_Name'] ?></td>
                                 <td><?php echo $dat['employee_Secondname'] ?></td>
                                 <td><?php echo $dat['employee_Lastname'] ?></td>
