@@ -96,7 +96,9 @@ $(document).on("click", ".btnEditar", function(){
     $("#employee_TipoContrato").val(employee_TipoContrato);
     $("#employee_HorasLaborales").val(employee_HorasLaborales);
     $("#employee_TipoSalario").val(employee_TipoSalario);
-        
+    
+    console.log("employee_Id: ", employee_Id, "company_id: ", company_id, "employee_Name: ", employee_Name, "employee_Secondname: ", employee_Secondname, "employee_Lastname: ", employee_Lastname, "employee_Secondlastname: ", employee_Secondlastname, "employee_Genero: ", employee_Genero, "employee_Birthdate: ", employee_Birthdate, "employee_EstadoCivil: ", employee_EstadoCivil, "employee_UltimoNivelEstudio: ", employee_UltimoNivelEstudio, "employee_Ocupacion: ", employee_Ocupacion, "employee_ResidenciaDepartamento: ", employee_ResidenciaDepartamento, "employee_ResidenciaCuidad: ", employee_ResidenciaCuidad, "employee_EstratoSocial: ", employee_EstratoSocial, "employee_TipoVivienda: ", employee_TipoVivienda, "employee_PersonasACargo: ", employee_PersonasACargo, "employee_TrabajoDepartamento: ", employee_TrabajoDepartamento, "employee_TrabajoCuidad: ", employee_TrabajoCuidad, "employee_TiempoEnEmpresa: ", employee_TiempoEnEmpresa, "employee_NombreCargo: ", employee_NombreCargo, "employee_TipoCargo: ", employee_TipoCargo, "employee_TiempoEnCargo: ", employee_TiempoEnCargo, "employee_NombreArea: ", employee_NombreArea, "employee_TipoContrato: ", employee_TipoContrato, "employee_HorasLaborales: ", employee_HorasLaborales, "employee_TipoSalario: ", employee_TipoSalario);
+
     $(".modal-header").css("background-color", "#007bff");
     $(".modal-header").css("color", "white");
     $(".modal-title").text("Editar Empleado");            

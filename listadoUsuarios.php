@@ -33,7 +33,7 @@ $consulta = "SELECT
         e.employee_NombreArea,
         e.employee_TipoContrato,
         e.employee_HorasLaborales,
-        e.employee_TipoSalario
+        e.employee_TipoSalario,
         --c.company_name
     FROM employees e
     LEFT JOIN companies c ON e.company_id = c.company_id
