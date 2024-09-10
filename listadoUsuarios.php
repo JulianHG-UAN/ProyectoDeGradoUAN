@@ -34,7 +34,19 @@ $consulta = "SELECT
         e.employee_TipoContrato,
         e.employee_HorasLaborales,
         e.employee_TipoSalario,
-        --c.company_name
+        c.company_name,
+        g.genero,
+        ec.estado_civil,
+        ne.nivel_estudio,
+        rd.departamento as residencia_departamento,
+        rc.ciudad as residencia_ciudad,
+        es.estrato,
+        tv.tipo_vivienda,
+        td.departamento,
+        tc.ciudad,
+        tcg.tipo_cargo,
+        tco.tipo_contrato,
+        ts.tipo_salario
     FROM employees e
     LEFT JOIN companies c ON e.company_id = c.company_id
     LEFT JOIN opciones_genero g ON e.employee_Genero = g.id
@@ -115,31 +127,31 @@ $companies = $resultado2->fetchAll(PDO::FETCH_ASSOC);
                             ?>
                             <tr>
                                 <td><?php echo $dat['employee_Id'] ?></td>
-                                <td><?php echo $dat['company_id'] ?></td>
+                                <td><?php echo $dat['company_name'] ?></td>
                                 <td><?php echo $dat['employee_Name'] ?></td>
                                 <td><?php echo $dat['employee_Secondname'] ?></td>
                                 <td><?php echo $dat['employee_Lastname'] ?></td>
                                 <td><?php echo $dat['employee_Secondlastname'] ?></td>
-                                <td><?php echo $dat['employee_Genero'] ?></td>
+                                <td><?php echo $dat['genero'] ?></td>
                                 <td><?php echo $dat['employee_Birthdate'] ?></td>
-                                <td><?php echo $dat['employee_EstadoCivil'] ?></td>
-                                <td><?php echo $dat['employee_UltimoNivelEstudio'] ?></td>
+                                <td><?php echo $dat['estado_civil'] ?></td>
+                                <td><?php echo $dat['nivel_estudio'] ?></td>
                                 <td><?php echo $dat['employee_Ocupacion'] ?></td>
-                                <td><?php echo $dat['employee_ResidenciaDepartamento'] ?></td>
-                                <td><?php echo $dat['employee_ResidenciaCuidad'] ?></td>
-                                <td><?php echo $dat['employee_EstratoSocial'] ?></td>
-                                <td><?php echo $dat['employee_TipoVivienda'] ?></td>
+                                <td><?php echo $dat['residencia_departamento'] ?></td>
+                                <td><?php echo $dat['residencia_ciudad'] ?></td>
+                                <td><?php echo $dat['estrato'] ?></td>
+                                <td><?php echo $dat['tipo_vivienda'] ?></td>
                                 <td><?php echo $dat['employee_PersonasACargo'] ?></td>
-                                <td><?php echo $dat['employee_TrabajoDepartamento'] ?></td>
-                                <td><?php echo $dat['employee_TrabajoCuidad'] ?></td>
+                                <td><?php echo $dat['departamento'] ?></td>
+                                <td><?php echo $dat['ciudad'] ?></td>
                                 <td><?php echo $dat['employee_TiempoEnEmpresa'] ?></td>
                                 <td><?php echo $dat['employee_NombreCargo'] ?></td>
-                                <td><?php echo $dat['employee_TipoCargo'] ?></td>
+                                <td><?php echo $dat['tipo_cargo'] ?></td>
                                 <td><?php echo $dat['employee_TiempoEnCargo'] ?></td>
                                 <td><?php echo $dat['employee_NombreArea'] ?></td>
-                                <td><?php echo $dat['employee_TipoContrato'] ?></td>
+                                <td><?php echo $dat['tipo_contrato'] ?></td>
                                 <td><?php echo $dat['employee_HorasLaborales'] ?></td>
-                                <td><?php echo $dat['employee_TipoSalario'] ?></td>
+                                <td><?php echo $dat['tipo_salario'] ?></td>
                                 <td></td>
                             </tr>
                             <?php
@@ -303,7 +315,7 @@ $companies = $resultado2->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </div> 
 
-</div>
+
 
 <!-- FIN contenido principal -->
 
