@@ -7,6 +7,9 @@ try {
     $usuario = $_POST['usuario'];
     $password = $_POST['password'];
 
+    session_start();
+    $_SESSION['usuario'] = $usuario;
+
     // Establecer la conexión
     $conexion = Conexion::Conectar();
 
@@ -21,8 +24,21 @@ try {
 
     // Verificar si se encontró un resultado
     if ($stmt->rowCount() > 0) {
-        // Usuario y contraseña válidos, redirigir a index.php
-        header("Location: index.php");
+        // Obtener los datos del usuario
+        $usuarioData = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // Guardar el rol en la sesión
+        $_SESSION['role_id'] = $usuarioData['role_id']; // Se asume que la tabla users tiene una columna 'role_id'
+
+        // Redirigir según el rol del usuario
+        if ($usuarioData['role_id'] === 1) {
+            header("Location: admin_dashboard.php");
+        } elseif ($usuarioData['role_id'] === 2) {
+            header("Location: operador_dashboard.php");
+        } else {
+            // Si el rol no es válido, puedes redirigir a un error o a una página predeterminada
+            echo "<script>alert('Rol de usuario no válido.'); window.location.href = 'login.php';</script>";
+        }
         exit(); // Importante para detener la ejecución del script
     } else {
         // Usuario y/o contraseña incorrectos, mostrar alerta en JS

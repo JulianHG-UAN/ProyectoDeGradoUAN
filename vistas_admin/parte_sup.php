@@ -1,3 +1,13 @@
+<?php
+    session_start();
+    $varsesion = $_SESSION['usuario'];
+    error_reporting(0);
+    if ($varsesion == null || $varsesion = '') {
+        header("location:login.php");
+        die();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -207,7 +217,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Usuario Generico</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Usuario Administrador</span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>

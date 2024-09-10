@@ -33,10 +33,10 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Selecciona "Cerrar sesión" abajo si estas listo para salir de la sesión actual.</div>
+                <div class="modal-body">Selecciona "Cerrar sesión" si estas listo para salir del sistema.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Volver</button>
-                    <a class="btn btn-primary" href="login.php">Cerrar Sesión</a>
+                    <a class="btn btn-primary" href="cerrar_sesion.php">Cerrar Sesión</a>
                 </div>
             </div>
         </div>

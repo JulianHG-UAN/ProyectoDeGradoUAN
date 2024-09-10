@@ -28,9 +28,7 @@
 
         <!-- Outer Row -->
         <div class="row justify-content-center">
-
             <div class="col-xl-10 col-lg-12 col-md-9">
-
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
@@ -51,20 +49,11 @@
                                             <input type="password" class="form-control form-control-user"
                                                 id="exampleInputPassword" placeholder="Contraseña" name='password'>
                                         </div>
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Recuerdame</label>
-                                            </div>
-                                        </div>
                                         <input type='submit' value='Ingresar' class="btn btn-primary btn-user btn-block">
                                     </form>
                                     <hr>
                                     <div class="text-center">
                                         <a class="small" href="forgot-password.php">Olvidaste la contraseña?</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="small" href="register.php">Crear una nueva cuenta!</a>
                                     </div>
                                 </div>
                             </div>
