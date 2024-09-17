@@ -1,13 +1,11 @@
 <?php
-    session_start();
-    $varsesion = $_SESSION['usuario'];
-    error_reporting(0);
-    if ($varsesion == null || $varsesion = '') {
-        header("location:login.php");
-        die();
-    }
-?>
+session_start(); // Esto debe estar en la primera línea sin espacios o líneas en blanco
 
+if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
+    header("location:login.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -72,13 +70,13 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Usuarios</span>
+                    <span>Empleados</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Sistema de usuarios:</h6>
-                        <a class="collapse-item" href="nuevosIngresos.php">Nuevos Ingresos</a>
-                        <a class="collapse-item" href="listadoUsuarios.php">Listado</a>
+                        <h6 class="collapse-header">Sistema de empleados:</h6>
+                        <a class="collapse-item" href="nuevosIngresos.php">Encuesta</a>
+                        <a class="collapse-item" href="listadoEmpleados.php">Listado Empleados</a>
                         <a class="collapse-item" href="#">Datos</a>
                     </div>
                 </div>
@@ -95,9 +93,8 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Sistema de compañias:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Nueva compañia</a>
-                        <a class="collapse-item" href="utilities-border.html">Listado</a>
-                        <a class="collapse-item" href="utilities-animation.html">Usuarios x Compañia</a>
+                        <a class="collapse-item" href="#">Listado compañias</a>
+                        <a class="collapse-item" href="#">Usuarios x Compañia</a>
                     </div>
                 </div>
             </li>
@@ -115,17 +112,12 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Analisis</span>
+                    <span>Usuarios</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="#">Item</a>
-                        <a class="collapse-item" href="#">Item</a>
-                        <a class="collapse-item" href="#">Item</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="#">Item</a>
+                        <a class="collapse-item" href="#">Listado Usuarios</a>
                         <a class="collapse-item" href="#">Item</a>
                     </div>
                 </div>
@@ -224,7 +216,7 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="perfil_usuario.php">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Perfil
                                 </a>

@@ -78,7 +78,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Sistema de usuarios:</h6>
                         <a class="collapse-item" href="nuevosIngresos.php">Nuevos Ingresos</a>
-                        <a class="collapse-item" href="listadoUsuarios.php">Listado</a>
+                        <a class="collapse-item" href="listadoEmpleados.php">Listado</a>
                         <a class="collapse-item" href="#">Datos</a>
                     </div>
                 </div>
@@ -181,7 +181,7 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="perfil_usuario.php">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Perfil
                                 </a>
