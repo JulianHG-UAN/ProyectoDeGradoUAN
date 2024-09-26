@@ -7,7 +7,7 @@ $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 
 // Consulta 1: Obtener datos de 'employees'
-$consulta = "SELECT e.employee_Id, a.question_id, q.type_response, a.answer_value 
+$consulta = "SELECT e.employee_Id, CONCAT(e.employee_name, ' ', e.employee_lastname) AS employee_fullname, a.question_id, q.type_response, a.answer_value 
              FROM employees e 
              LEFT JOIN answers a ON e.employee_Id = a.employee_id 
              LEFT JOIN questions q ON q.question_id = a.question_id";
@@ -38,14 +38,14 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         <tbody>
                             <?php foreach($data as $dat) { ?>
                             <tr>
-                                <td><?php echo $dat['employee_Id'] ?></td>
+                                <td data-employee-id="<?php echo $dat['employee_Id']; ?>"><?php echo $dat['employee_fullname']; ?></td>
                                 <td><?php echo $dat['question_id'] ?></td>
                                 <td><?php echo $dat['type_response'] ?></td>
                                 <td><input type="text" value="<?php echo htmlspecialchars($dat['answer_value'], ENT_QUOTES, 'UTF-8'); ?>"></td>
                                 <td style="display: none;"></td>
                             </tr>
-                            <?php } ?>                                
-                        </tbody>        
+                            <?php } ?>                         
+                        </tbody>
                     </table>                    
                 </div>
             </div>

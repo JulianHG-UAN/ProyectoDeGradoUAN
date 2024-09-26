@@ -10,6 +10,10 @@ $(document).ready(function() {
           "targets": -1,
           "data": null,
       }],
+      "lengthMenu": [
+            [25],
+            [25]
+      ],
       "language": {
           "lengthMenu": "Mostrar _MENU_ registros",
           "zeroRecords": "No se encontraron resultados",
@@ -35,20 +39,23 @@ $(document).ready(function() {
       let answers = [];
   
       $('#lp-tablaPreguntas tbody tr').each(function() {
-          let employee_id = $(this).find('td').eq(0).text();
-          let question_id = $(this).find('td').eq(1).text();
-          let answer_value = $(this).find('input').val();
-  
-          // Validar que los valores sean correctos
-          if (employee_id && question_id && answer_value) {
-              answers.push({
-                  employee_id: employee_id,
-                  question_id: question_id,
-                  answer_value: answer_value
-              });
-          }
-      });
-  
+        let employee_id = $(this).find('td').eq(0).data('employee-id');
+        let question_id = $(this).find('td').eq(1).text();
+        let answer_value = $(this).find('input').val();
+    
+        console.log({ employee_id, question_id, answer_value });  // Muestra los valores en la consola para verificar
+    
+        if (employee_id && question_id && answer_value) {
+            answers.push({
+                employee_id: employee_id,
+                question_id: question_id,
+                answer_value: answer_value
+            });
+        }
+    });
+    
+    console.log("Datos recolectados: ", answers);
+    
       // Enviar los datos mediante AJAX
       $.ajax({
           url: "bd/update_answers.php",
