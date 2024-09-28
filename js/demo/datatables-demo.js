@@ -67,6 +67,7 @@ $(document).ready(function() {
           success: function(data){  
               if (!data || !data[0]) {
                   console.log("Datos vacíos o incorrectos:", data);
+                  alert("Datos guardados correctamente");
                   return;
               }
               // Procesar la respuesta y actualizar la tabla si es necesario

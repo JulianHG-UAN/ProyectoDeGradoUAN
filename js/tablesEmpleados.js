@@ -4,7 +4,7 @@ $(document).ready(function() {
         "columnDefs": [{
             "targets": -1,
             "data": null,
-            "defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btnEditar'>Editar</button><button class='btn btn-danger btnBorrar'>Borrar</button></div></div>"
+            "defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btnEditar'>Editar</button><button class='btn btn-danger btnBorrar'>Borrar</button> <button class='btn btn-warning btnPreguntas'>Preguntas</button> </div></div>"
         }],
         "language": {
             "lengthMenu": "Mostrar _MENU_ registros",
@@ -31,6 +31,20 @@ $("#btnNuevo").click(function(){
     $("#modalCRUD").modal("show");        
     employee_Id=null;
     opcion = 1; //alta
+}); 
+
+// Delegamos el evento click para .btnPreguntas en la tabla
+$('#tablaEmpleados tbody').on('click', '.btnPreguntas', function() {
+    var filaEmp = $(this).closest("tr"); // Encuentra la filaEmp asociada al botón
+    var employee_Id = parseInt(filaEmp.find('td:eq(0)').text()) || 0; // Asigna el ID del empleado
+
+    if (!employee_Id) {
+        console.error("No se pudo obtener el ID del empleado.");
+        return;
+    }
+
+    // Redirige a listadoPreguntas.php con el ID del empleado como parámetro
+    window.location.href = "listadoPreguntas.php?employee_Id=" + employee_Id;
 }); 
 
 var fila; //capturar la fila para editar o borrar el registro
