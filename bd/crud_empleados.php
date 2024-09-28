@@ -41,7 +41,10 @@ try {
             $resultado = $conexion->prepare($consulta);
             $resultado->execute();
             
-            $consulta = "SELECT * FROM employees ORDER BY employee_Id DESC LIMIT 1";
+            $consulta = "SELECT e.*, c.company_name FROM employees e 
+                        JOIN companies c ON e.company_id = c.company_id 
+                        ORDER BY employee_Id DESC LIMIT 1";
+
             $resultado = $conexion->prepare($consulta);
             $resultado->execute();
             $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
