@@ -93,7 +93,7 @@ $companies = $resultado2->fetchAll(PDO::FETCH_ASSOC);
                         <thead class="text-center">
                             <tr>
                                 <th>Id del empleado</th>
-                                <th>Id de la compañia</th>
+                                <th>Nombre de la compañia</th>
                                 <th>Nombre</th>
                                 <th>Segundo nombre</th>
                                 <th>Apellido</th>
@@ -127,7 +127,7 @@ $companies = $resultado2->fetchAll(PDO::FETCH_ASSOC);
                             ?>
                             <tr>
                                 <td><?php echo $dat['employee_Id'] ?></td>
-                                <td><?php echo $dat['company_name'] ?></td>
+                                <td data-company-id="<?php echo $dat['company_id']; ?>"><?php echo $dat['company_name']; ?></td>
                                 <td><?php echo $dat['employee_Name'] ?></td>
                                 <td><?php echo $dat['employee_Secondname'] ?></td>
                                 <td><?php echo $dat['employee_Lastname'] ?></td>

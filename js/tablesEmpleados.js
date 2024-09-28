@@ -59,7 +59,7 @@ $(document).on("click", ".btnEditar", function(){
     }
     
     opcion = 2; //editar
-    company_id = parseInt(fila.find('td:eq(1)').text());
+    company_id = parseInt(fila.find('td:eq(1)').data('company-id'));
     employee_Name = fila.find('td:eq(2)').text();
     employee_Secondname = fila.find('td:eq(3)').text();
     employee_Lastname = fila.find('td:eq(4)').text();
@@ -217,8 +217,8 @@ $("#formEmpleados").submit(function(e){
             // Actualizar tabla con el nuevo empleado
             if (opcion == 1) {
                 tablaEmpleados.row.add([
-                    data[0].employee_Id, 
-                    data[0].company_id, 
+                    data[0].employee_Id,
+                    data[0].company_name,
                     data[0].employee_Name, 
                     data[0].employee_Secondname,
                     data[0].employee_Lastname,
@@ -247,7 +247,7 @@ $("#formEmpleados").submit(function(e){
             } else {
                 tablaEmpleados.row(fila).data([
                     data[0].employee_Id, 
-                    data[0].company_id, 
+                    data[0].company_name, 
                     data[0].employee_Name, 
                     data[0].employee_Secondname,
                     data[0].employee_Lastname,

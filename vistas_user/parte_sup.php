@@ -77,7 +77,6 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Sistema de empleados:</h6>
-                        <a class="collapse-item" href="listadoPreguntas.php">Listado Encuesta</a>
                         <a class="collapse-item" href="listadoEmpleados.php">Listado Empleados</a>
                         <a class="collapse-item" href="#">Datos</a>
                     </div>
@@ -95,7 +94,6 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Sistema de compañias:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Nueva compañia</a>
                         <a class="collapse-item" href="utilities-border.html">Listado</a>
                         <a class="collapse-item" href="utilities-animation.html">Usuarios x Compañia</a>
                     </div>

@@ -75,7 +75,6 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Sistema de empleados:</h6>
-                        <a class="collapse-item" href="listadoPreguntas.php">Listado Encuesta</a>
                         <a class="collapse-item" href="listadoEmpleados.php">Listado Empleados</a>
                         <a class="collapse-item" href="#">Datos</a>
                     </div>
@@ -118,23 +117,8 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
                         <a class="collapse-item" href="#">Listado Usuarios</a>
-                        <a class="collapse-item" href="#">Item</a>
                     </div>
                 </div>
-            </li>
-
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Panel de usuario</span></a>
-            </li>
-
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Información</span></a>
             </li>
 
             <!-- Divider -->
