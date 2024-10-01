@@ -65,11 +65,71 @@ $resultado = $conexion->prepare($consulta);
 $resultado->execute();
 $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
-// Consulta 2: Obtener datos de otra tabla, por ejemplo, 'departments'
+// Consulta 2: Obtener datos de companies
 $consulta2 = "SELECT * FROM companies";
 $resultado2 = $conexion->prepare($consulta2);
 $resultado2->execute();
 $companies = $resultado2->fetchAll(PDO::FETCH_ASSOC);
+
+// Consulta 3: Obtener datos de opciones_genero
+$consulta3 = "SELECT * FROM opciones_genero";
+$resultado3 = $conexion->prepare($consulta3);
+$resultado3->execute();
+$generos = $resultado3->fetchAll(PDO::FETCH_ASSOC);
+
+// Consulta 4: Obtener datos de opciones_estado_civil
+$consulta4 = "SELECT * FROM opciones_estado_civil";
+$resultado4 = $conexion->prepare($consulta4);
+$resultado4->execute();
+$estados_civiles = $resultado4->fetchAll(PDO::FETCH_ASSOC);
+
+// Consulta 5: Obtener datos de opciones_nivel_estudio
+$consulta5 = "SELECT * FROM opciones_nivel_estudio";
+$resultado5 = $conexion->prepare($consulta5);
+$resultado5->execute();
+$niveles_estudio = $resultado5->fetchAll(PDO::FETCH_ASSOC);
+
+// Consulta 6: Obtener datos de opciones_departamento
+$consulta6 = "SELECT * FROM opciones_departamento";
+$resultado6 = $conexion->prepare($consulta6);
+$resultado6->execute();
+$departamentos = $resultado6->fetchAll(PDO::FETCH_ASSOC);
+
+// Consulta 7: Obtener datos de opciones_ciudad
+$consulta7 = "SELECT * FROM opciones_ciudad";
+$resultado7 = $conexion->prepare($consulta7);
+$resultado7->execute();
+$ciudades = $resultado7->fetchAll(PDO::FETCH_ASSOC);
+
+// Consulta 8: Obtener datos de opciones_estrato
+$consulta8 = "SELECT * FROM opciones_estrato";
+$resultado8 = $conexion->prepare($consulta8);
+$resultado8->execute();
+$estratos = $resultado8->fetchAll(PDO::FETCH_ASSOC);
+
+// Consulta 9: Obtener datos de opciones_tipo_vivienda
+$consulta9 = "SELECT * FROM opciones_tipo_vivienda";
+$resultado9 = $conexion->prepare($consulta9);
+$resultado9->execute();
+$tipos_vivienda = $resultado9->fetchAll(PDO::FETCH_ASSOC);
+
+// Consulta 10: Obtener datos de opciones_tipo_cargo
+$consulta10 = "SELECT * FROM opciones_tipo_cargo";
+$resultado10 = $conexion->prepare($consulta10);
+$resultado10->execute();
+$tipos_cargo = $resultado10->fetchAll(PDO::FETCH_ASSOC);
+
+// Consulta 11: Obtener datos de opciones_tipo_contrato
+$consulta11 = "SELECT * FROM opciones_tipo_contrato";
+$resultado11 = $conexion->prepare($consulta11);
+$resultado11->execute();
+$tipos_contrato = $resultado11->fetchAll(PDO::FETCH_ASSOC);
+
+// Consulta 12: Obtener datos de opciones_tipo_salario
+$consulta12 = "SELECT * FROM opciones_tipo_salario";
+$resultado12 = $conexion->prepare($consulta12);
+$resultado12->execute();
+$tipos_salario = $resultado12->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -132,26 +192,26 @@ $companies = $resultado2->fetchAll(PDO::FETCH_ASSOC);
                                 <td><?php echo $dat['employee_Secondname'] ?></td>
                                 <td><?php echo $dat['employee_Lastname'] ?></td>
                                 <td><?php echo $dat['employee_Secondlastname'] ?></td>
-                                <td><?php echo $dat['employee_Genero'] ?></td>
+                                <td data-genero-id="<?php echo $dat['employee_Genero']; ?>"><?php echo $dat['genero']; ?></td>
                                 <td><?php echo $dat['employee_Birthdate'] ?></td>
-                                <td><?php echo $dat['employee_EstadoCivil'] ?></td>
-                                <td><?php echo $dat['employee_UltimoNivelEstudio'] ?></td>
+                                <td data-estadoCivil-id="<?php echo $dat['employee_EstadoCivil']; ?>"><?php echo $dat['estado_civil']; ?></td>
+                                <td data-nivelEstudio-id="<?php echo $dat['employee_UltimoNivelEstudio']; ?>"><?php echo $dat['nivel_estudio']; ?></td>
                                 <td><?php echo $dat['employee_Ocupacion'] ?></td>
-                                <td><?php echo $dat['employee_ResidenciaDepartamento'] ?></td>
-                                <td><?php echo $dat['employee_ResidenciaCuidad'] ?></td>
-                                <td><?php echo $dat['employee_EstratoSocial'] ?></td>
-                                <td><?php echo $dat['employee_TipoVivienda'] ?></td>
+                                <td data-residenciaDepartamento-id="<?php echo $dat['employee_ResidenciaDepartamento']; ?>"><?php echo $dat['residencia_departamento']; ?></td>
+                                <td data-residenciaCiudad-id="<?php echo $dat['employee_ResidenciaCuidad']; ?>"><?php echo $dat['residencia_ciudad']; ?></td>
+                                <td data-estrato-id="<?php echo $dat['employee_EstratoSocial']; ?>"><?php echo $dat['estrato']; ?></td>
+                                <td data-tipoVivienda-id="<?php echo $dat['employee_TipoVivienda']; ?>"><?php echo $dat['tipo_vivienda']; ?></td>
                                 <td><?php echo $dat['employee_PersonasACargo'] ?></td>
-                                <td><?php echo $dat['employee_TrabajoDepartamento'] ?></td>
-                                <td><?php echo $dat['employee_TrabajoCuidad'] ?></td>
+                                <td data-trabajoDepartamento-id="<?php echo $dat['employee_TrabajoDepartamento']; ?>"><?php echo $dat['departamento']; ?></td>
+                                <td data-trabajoCuidad-id="<?php echo $dat['employee_TrabajoCuidad']; ?>"><?php echo $dat['ciudad']; ?></td>
                                 <td><?php echo $dat['employee_TiempoEnEmpresa'] ?></td>
                                 <td><?php echo $dat['employee_NombreCargo'] ?></td>
-                                <td><?php echo $dat['employee_TipoCargo'] ?></td>
+                                <td data-tipoCargo-id="<?php echo $dat['employee_TipoCargo']; ?>"><?php echo $dat['tipo_cargo']; ?></td>
                                 <td><?php echo $dat['employee_TiempoEnCargo'] ?></td>
                                 <td><?php echo $dat['employee_NombreArea'] ?></td>
-                                <td><?php echo $dat['employee_TipoContrato'] ?></td>
+                                <td data-tipoContrato-id="<?php echo $dat['employee_TipoContrato']; ?>"><?php echo $dat['tipo_contrato']; ?></td>
                                 <td><?php echo $dat['employee_HorasLaborales'] ?></td>
-                                <td><?php echo $dat['employee_TipoSalario'] ?></td>
+                                <td data-tipoSalario-id="<?php echo $dat['employee_TipoSalario']; ?>"><?php echo $dat['tipo_salario']; ?></td>
                                 <td></td>
                             </tr>
                             <?php
@@ -180,6 +240,7 @@ $companies = $resultado2->fetchAll(PDO::FETCH_ASSOC);
                 <div class="form-group">
                 <label for="company_id" class="col-form-label">Id de la compañia:</label>
                 <select class="form-control" id="company_id" name="company_id">
+                    <option value="" selected disabled>Selecciona una compañía</option> <!-- Opción vacía por defecto -->
                     <?php foreach ($companies as $company): ?>
                         <option value="<?= $company['company_id'] ?>"><?= $company['company_name'] ?></option>
                     <?php endforeach; ?>
@@ -207,8 +268,13 @@ $companies = $resultado2->fetchAll(PDO::FETCH_ASSOC);
                 </div>
 
                 <div class="form-group">
-                <label for="employee_Genero" class="col-form-label">Genero:</label>
-                <input type="number" class="form-control" id="employee_Genero">
+                <label for="employee_Genero" class="col-form-label">Género:</label>
+                <select class="form-control" id="employee_Genero" name="employee_Genero">
+                    <option value="" selected disabled>Selecciona un género</option> <!-- Opción vacía por defecto -->
+                    <?php foreach ($generos as $genero): ?>
+                        <option value="<?= $genero['id'] ?>"><?= $genero['genero'] ?></option>
+                    <?php endforeach; ?>
+                    </select>
                 </div>
 
                 <div class="form-group">
@@ -218,12 +284,26 @@ $companies = $resultado2->fetchAll(PDO::FETCH_ASSOC);
 
                 <div class="form-group">
                 <label for="employee_EstadoCivil" class="col-form-label">Estado civil:</label>
-                <input type="number" class="form-control" id="employee_EstadoCivil">
+                <select class="form-control" id="employee_EstadoCivil" name="employee_EstadoCivil">
+                    <option value="" selected disabled>Selecciona el estado civil:</option> <!-- Opción vacía por defecto -->
+                    <?php foreach ($estados_civiles as $estado_civil): ?>
+                        <option value="<?= htmlspecialchars($estado_civil['id'], ENT_QUOTES, 'UTF-8') ?>">
+                            <?= htmlspecialchars($estado_civil['estado_civil'], ENT_QUOTES, 'UTF-8') ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
                 </div>
 
                 <div class="form-group">
-                <label for="employee_UltimoNivelEstudio" class="col-form-label">Ultimo nivel de estudio:</label>
-                <input type="number" class="form-control" id="employee_UltimoNivelEstudio">
+                <label for="employee_UltimoNivelEstudio" class="col-form-label">Ultimo nivel estudio:</label>
+                <select class="form-control" id="employee_UltimoNivelEstudio" name="employee_UltimoNivelEstudio">
+                    <option value="" selected disabled>Selecciona el ultimo nivel estudio:</option> <!-- Opción vacía por defecto -->
+                    <?php foreach ($niveles_estudio as $nivel_estudio): ?>
+                        <option value="<?= htmlspecialchars($nivel_estudio['id'], ENT_QUOTES, 'UTF-8') ?>">
+                            <?= htmlspecialchars($nivel_estudio['nivel_estudio'], ENT_QUOTES, 'UTF-8') ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
                 </div>
 
                 <div class="form-group">
@@ -233,22 +313,50 @@ $companies = $resultado2->fetchAll(PDO::FETCH_ASSOC);
 
                 <div class="form-group">
                 <label for="employee_ResidenciaDepartamento" class="col-form-label">Departamento de residencia:</label>
-                <input type="number" class="form-control" id="employee_ResidenciaDepartamento">
+                <select class="form-control" id="employee_ResidenciaDepartamento" name="employee_ResidenciaDepartamento">
+                    <option value="" selected disabled>Selecciona el departamento de residencia:</option> <!-- Opción vacía por defecto -->
+                    <?php foreach ($departamentos as $departamento): ?>
+                        <option value="<?= htmlspecialchars($departamento['id'], ENT_QUOTES, 'UTF-8') ?>">
+                            <?= htmlspecialchars($departamento['departamento'], ENT_QUOTES, 'UTF-8') ?>
+                        </option>
+                    <?php endforeach; ?>
+                    </select>
                 </div>
 
                 <div class="form-group">
                 <label for="employee_ResidenciaCuidad" class="col-form-label">Ciudad de residencia:</label>
-                <input type="number" class="form-control" id="employee_ResidenciaCuidad">
+                <select class="form-control" id="employee_ResidenciaCuidad" name="employee_ResidenciaCuidad">
+                    <option value="" selected disabled>Selecciona la ciudad de residencia:</option> <!-- Opción vacía por defecto -->
+                    <?php foreach ($ciudades as $ciudad): ?>
+                        <option value="<?= htmlspecialchars($ciudad['id'], ENT_QUOTES, 'UTF-8') ?>">
+                            <?= htmlspecialchars($ciudad['ciudad'], ENT_QUOTES, 'UTF-8') ?>
+                        </option>
+                    <?php endforeach; ?>
+                    </select>
                 </div>
 
                 <div class="form-group">
                 <label for="employee_EstratoSocial" class="col-form-label">Estrato social:</label>
-                <input type="number" class="form-control" id="employee_EstratoSocial">
+                <select class="form-control" id="employee_EstratoSocial" name="employee_EstratoSocial">
+                    <option value="" selected disabled>Selecciona el estrato social:</option> <!-- Opción vacía por defecto -->
+                    <?php foreach ($estratos as $estrato): ?>
+                        <option value="<?= htmlspecialchars($estrato['id'], ENT_QUOTES, 'UTF-8') ?>">
+                            <?= htmlspecialchars($estrato['estrato'], ENT_QUOTES, 'UTF-8') ?>
+                        </option>
+                    <?php endforeach; ?>
+                    </select>
                 </div>
 
                 <div class="form-group">
                 <label for="employee_TipoVivienda" class="col-form-label">Tipo de vivienda:</label>
-                <input type="number" class="form-control" id="employee_TipoVivienda">
+                <select class="form-control" id="employee_TipoVivienda" name="employee_TipoVivienda">
+                    <option value="" selected disabled>Selecciona el tipo de vivienda:</option> <!-- Opción vacía por defecto -->
+                    <?php foreach ($tipos_vivienda as $tipo_vivienda): ?>
+                        <option value="<?= htmlspecialchars($tipo_vivienda['id'], ENT_QUOTES, 'UTF-8') ?>">
+                            <?= htmlspecialchars($tipo_vivienda['tipo_vivienda'], ENT_QUOTES, 'UTF-8') ?>
+                        </option>
+                    <?php endforeach; ?>
+                    </select>
                 </div>
 
                 <div class="form-group">
@@ -258,12 +366,26 @@ $companies = $resultado2->fetchAll(PDO::FETCH_ASSOC);
 
                 <div class="form-group">
                 <label for="employee_TrabajoDepartamento" class="col-form-label">Departamento de trabajo:</label>
-                <input type="number" class="form-control" id="employee_TrabajoDepartamento">
+                <select class="form-control" id="employee_TrabajoDepartamento" name="employee_TrabajoDepartamento">
+                    <option value="" selected disabled>Selecciona el departamento de trabajo:</option> <!-- Opción vacía por defecto -->
+                    <?php foreach ($departamentos as $departamento): ?>
+                        <option value="<?= htmlspecialchars($departamento['id'], ENT_QUOTES, 'UTF-8') ?>">
+                            <?= htmlspecialchars($departamento['departamento'], ENT_QUOTES, 'UTF-8') ?>
+                        </option>
+                    <?php endforeach; ?>
+                    </select>
                 </div>
 
                 <div class="form-group">
                 <label for="employee_TrabajoCuidad" class="col-form-label">Ciudad de trabajo:</label>
-                <input type="number" class="form-control" id="employee_TrabajoCuidad">
+                <select class="form-control" id="employee_TrabajoCuidad" name="employee_TrabajoCuidad">
+                    <option value="" selected disabled>Selecciona la ciudad de trabajo:</option> <!-- Opción vacía por defecto -->
+                    <?php foreach ($ciudades as $ciudad): ?>
+                        <option value="<?= htmlspecialchars($ciudad['id'], ENT_QUOTES, 'UTF-8') ?>">
+                            <?= htmlspecialchars($ciudad['ciudad'], ENT_QUOTES, 'UTF-8') ?>
+                        </option>
+                    <?php endforeach; ?>
+                    </select>
                 </div>
 
                 <div class="form-group">
@@ -278,7 +400,14 @@ $companies = $resultado2->fetchAll(PDO::FETCH_ASSOC);
 
                 <div class="form-group">
                 <label for="employee_TipoCargo" class="col-form-label">Tipo de cargo:</label>
-                <input type="number" class="form-control" id="employee_TipoCargo">
+                <select class="form-control" id="employee_TipoCargo" name="employee_TipoCargo">
+                    <option value="" selected disabled>Selecciona el tipo de cargo:</option> <!-- Opción vacía por defecto -->
+                    <?php foreach ($tipos_cargo as $tipo_cargo): ?>
+                        <option value="<?= htmlspecialchars($tipo_cargo['id'], ENT_QUOTES, 'UTF-8') ?>">
+                            <?= htmlspecialchars($tipo_cargo['tipo_cargo'], ENT_QUOTES, 'UTF-8') ?>
+                        </option>
+                    <?php endforeach; ?>
+                    </select>
                 </div>
 
                 <div class="form-group">
@@ -290,10 +419,17 @@ $companies = $resultado2->fetchAll(PDO::FETCH_ASSOC);
                 <label for="employee_NombreArea" class="col-form-label">Nombre del área:</label>
                 <input type="text" class="form-control" id="employee_NombreArea">
                 </div>
-
+                
                 <div class="form-group">
                 <label for="employee_TipoContrato" class="col-form-label">Tipo de contrato:</label>
-                <input type="number" class="form-control" id="employee_TipoContrato">
+                <select class="form-control" id="employee_TipoContrato" name="employee_TipoContrato">
+                    <option value="" selected disabled>Selecciona el tipo de contrato:</option> <!-- Opción vacía por defecto -->
+                    <?php foreach ($tipos_contrato as $tipo_contrato): ?>
+                        <option value="<?= htmlspecialchars($tipo_contrato['id'], ENT_QUOTES, 'UTF-8') ?>">
+                            <?= htmlspecialchars($tipo_contrato['tipo_contrato'], ENT_QUOTES, 'UTF-8') ?>
+                        </option>
+                    <?php endforeach; ?>
+                    </select>
                 </div>
 
                 <div class="form-group">
@@ -303,7 +439,14 @@ $companies = $resultado2->fetchAll(PDO::FETCH_ASSOC);
 
                 <div class="form-group">
                 <label for="employee_TipoSalario" class="col-form-label">Tipo de salario:</label>
-                <input type="number" class="form-control" id="employee_TipoSalario">
+                <select class="form-control" id="employee_TipoSalario" name="employee_TipoSalario">
+                    <option value="" selected disabled>Selecciona el tipo de salario:</option> <!-- Opción vacía por defecto -->
+                    <?php foreach ($tipos_salario as $tipo_salario): ?>
+                        <option value="<?= htmlspecialchars($tipo_salario['id'], ENT_QUOTES, 'UTF-8') ?>">
+                            <?= htmlspecialchars($tipo_salario['tipo_salario'], ENT_QUOTES, 'UTF-8') ?>
+                        </option>
+                    <?php endforeach; ?>
+                    </select>
                 </div>
             </div>
             <div class="modal-footer">

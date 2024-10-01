@@ -41,8 +41,21 @@ try {
             $resultado = $conexion->prepare($consulta);
             $resultado->execute();
             
-            $consulta = "SELECT e.*, c.company_name FROM employees e 
-                        JOIN companies c ON e.company_id = c.company_id 
+            $consulta = "SELECT e.*, c.company_name, g.genero, ec.estado_civil, ne.nivel_estudio, rd.departamento as residencia_departamento, rc.ciudad as residencia_ciudad, es.estrato, tv.tipo_vivienda, td.departamento, tc.ciudad, tcg.tipo_cargo, tco.tipo_contrato, ts.tipo_salario
+                        FROM employees e
+                        JOIN companies c ON e.company_id = c.company_id
+                        JOIN opciones_genero g ON e.employee_Genero = g.id
+                        JOIN opciones_estado_civil ec ON e.employee_EstadoCivil = ec.id
+                        JOIN opciones_nivel_estudio ne ON e.employee_UltimoNivelEstudio = ne.id
+                        JOIN opciones_departamento rd ON e.employee_ResidenciaDepartamento = rd.id
+                        JOIN opciones_ciudad rc ON e.employee_ResidenciaCuidad = rc.id
+                        JOIN opciones_estrato es ON e.employee_EstratoSocial = es.id
+                        JOIN opciones_tipo_vivienda tv ON e.employee_TipoVivienda = tv.id
+                        JOIN opciones_departamento td ON e.employee_TrabajoDepartamento = td.id
+                        JOIN opciones_ciudad tc ON e.employee_TrabajoCuidad = tc.id
+                        JOIN opciones_tipo_cargo tcg ON e.employee_TipoCargo = tcg.id
+                        JOIN opciones_tipo_contrato tco ON e.employee_TipoContrato = tco.id
+                        JOIN opciones_tipo_salario ts ON e.employee_TipoSalario = ts.id
                         ORDER BY employee_Id DESC LIMIT 1";
 
             $resultado = $conexion->prepare($consulta);
@@ -56,9 +69,22 @@ try {
             $resultado = $conexion->prepare($consulta);
             $resultado->execute();        
             
-            $consulta = "SELECT e.*, c.company_name FROM employees e 
-                         JOIN companies c ON e.company_id = c.company_id 
-                         WHERE e.employee_Id = '$employee_Id'";
+            $consulta = "SELECT e.*, c.company_name, g.genero, ec.estado_civil, ne.nivel_estudio, rd.departamento as residencia_departamento, rc.ciudad as residencia_ciudad, es.estrato, tv.tipo_vivienda, td.departamento, tc.ciudad, tcg.tipo_cargo, tco.tipo_contrato, ts.tipo_salario
+                        FROM employees e
+                        JOIN companies c ON e.company_id = c.company_id
+                        JOIN opciones_genero g ON e.employee_Genero = g.id
+                        JOIN opciones_estado_civil ec ON e.employee_EstadoCivil = ec.id
+                        JOIN opciones_nivel_estudio ne ON e.employee_UltimoNivelEstudio = ne.id
+                        JOIN opciones_departamento rd ON e.employee_ResidenciaDepartamento = rd.id
+                        JOIN opciones_ciudad rc ON e.employee_ResidenciaCuidad = rc.id
+                        JOIN opciones_estrato es ON e.employee_EstratoSocial = es.id
+                        JOIN opciones_tipo_vivienda tv ON e.employee_TipoVivienda = tv.id
+                        JOIN opciones_departamento td ON e.employee_TrabajoDepartamento = td.id
+                        JOIN opciones_ciudad tc ON e.employee_TrabajoCuidad = tc.id
+                        JOIN opciones_tipo_cargo tcg ON e.employee_TipoCargo = tcg.id
+                        JOIN opciones_tipo_contrato tco ON e.employee_TipoContrato = tco.id
+                        JOIN opciones_tipo_salario ts ON e.employee_TipoSalario = ts.id
+                        WHERE e.employee_Id = '$employee_Id'";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute();
             $data = $resultado->fetchAll(PDO::FETCH_ASSOC);

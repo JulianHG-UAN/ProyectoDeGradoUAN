@@ -57,33 +57,33 @@ $(document).on("click", ".btnEditar", function(){
         console.error("No se pudo obtener el ID del empleado.");
         return;
     }
-    
-    opcion = 2; //editar
-    company_id = parseInt(fila.find('td:eq(1)').data('company-id'));
-    employee_Name = fila.find('td:eq(2)').text();
-    employee_Secondname = fila.find('td:eq(3)').text();
-    employee_Lastname = fila.find('td:eq(4)').text();
-    employee_Secondlastname = fila.find('td:eq(5)').text();
-    employee_Genero = parseInt(fila.find('td:eq(6)').text());
-    employee_Birthdate = fila.find('td:eq(7)').text();
-    employee_EstadoCivil = parseInt(fila.find('td:eq(8)').text());
-    employee_UltimoNivelEstudio = parseInt(fila.find('td:eq(9)').text());
-    employee_Ocupacion = fila.find('td:eq(10)').text();
-    employee_ResidenciaDepartamento = parseInt(fila.find('td:eq(11)').text());
-    employee_ResidenciaCuidad = parseInt(fila.find('td:eq(12)').text());
-    employee_EstratoSocial = parseInt(fila.find('td:eq(13)').text());
-    employee_TipoVivienda = parseInt(fila.find('td:eq(14)').text());
-    employee_PersonasACargo = parseInt(fila.find('td:eq(15)').text());
-    employee_TrabajoDepartamento = parseInt(fila.find('td:eq(16)').text());
-    employee_TrabajoCuidad = parseInt(fila.find('td:eq(17)').text());
-    employee_TiempoEnEmpresa = parseInt(fila.find('td:eq(18)').text());
-    employee_NombreCargo = fila.find('td:eq(19)').text();
-    employee_TipoCargo = parseInt(fila.find('td:eq(20)').text());
-    employee_TiempoEnCargo = parseInt(fila.find('td:eq(21)').text());
-    employee_NombreArea = fila.find('td:eq(22)').text();
-    employee_TipoContrato = parseInt(fila.find('td:eq(23)').text());
-    employee_HorasLaborales = parseInt(fila.find('td:eq(24)').text());
-    employee_TipoSalario = parseInt(fila.find('td:eq(25)').text());
+
+    employee_Id = parseInt(fila.find('td:eq(0)').text()) || 0;
+    company_id = parseInt(fila.find('td:eq(1)').data('company-id')) || 0;
+    employee_Name = fila.find('td:eq(2)').text() || '';
+    employee_Secondname = fila.find('td:eq(3)').text() || '';
+    employee_Lastname = fila.find('td:eq(4)').text() || '';
+    employee_Secondlastname = fila.find('td:eq(5)').text() || '';
+    employee_Genero = parseInt(fila.find('td:eq(6)').data('genero-id')) || 0;
+    employee_Birthdate = fila.find('td:eq(7)').text() || '';
+    employee_EstadoCivil = fila.find('td:eq(8)').data('estadocivil-id') || 0;
+    employee_UltimoNivelEstudio = parseInt(fila.find('td:eq(9)').data('nivelestudio-id')) || 0;
+    employee_Ocupacion = fila.find('td:eq(10)').text() || '';
+    employee_ResidenciaDepartamento = parseInt(fila.find('td:eq(11)').data('residenciadepartamento-id')) || 0;
+    employee_ResidenciaCuidad = parseInt(fila.find('td:eq(12)').data('residenciaciudad-id')) || 0;
+    employee_EstratoSocial = parseInt(fila.find('td:eq(13)').data('estrato-id')) || 0;
+    employee_TipoVivienda = parseInt(fila.find('td:eq(14)').data('tipovivienda-id')) || 0;
+    employee_PersonasACargo = parseInt(fila.find('td:eq(15)').text()) || 0;
+    employee_TrabajoDepartamento = parseInt(fila.find('td:eq(16)').data('trabajodepartamento-id')) || 0;
+    employee_TrabajoCuidad = parseInt(fila.find('td:eq(17)').data('trabajocuidad-id')) || 0;
+    employee_TiempoEnEmpresa = parseInt(fila.find('td:eq(18)').text()) || 0;
+    employee_NombreCargo = fila.find('td:eq(19)').text() || '';
+    employee_TipoCargo = parseInt(fila.find('td:eq(20)').data('tipocargo-id')) || 0;
+    employee_TiempoEnCargo = parseInt(fila.find('td:eq(21)').text()) || 0;
+    employee_NombreArea = fila.find('td:eq(22)').text() || '';
+    employee_TipoContrato = parseInt(fila.find('td:eq(23)').data('tipocontrato-id')) || 0;
+    employee_HorasLaborales = parseInt(fila.find('td:eq(24)').text()) || 0;
+    employee_TipoSalario = parseInt(fila.find('td:eq(25)').data('tiposalario-id')) || 0;
 
     $("#company_id").val(company_id);
     $("#employee_Name").val(employee_Name);
@@ -221,26 +221,26 @@ $("#formEmpleados").submit(function(e){
                     data[0].employee_Secondname,
                     data[0].employee_Lastname,
                     data[0].employee_Secondlastname,
-                    data[0].employee_Genero,
+                    data[0].genero,
                     data[0].employee_Birthdate,
-                    data[0].employee_EstadoCivil,
-                    data[0].employee_UltimoNivelEstudio,
+                    data[0].estado_civil,
+                    data[0].nivel_estudio,
                     data[0].employee_Ocupacion,
-                    data[0].employee_ResidenciaDepartamento,
-                    data[0].employee_ResidenciaCuidad,
-                    data[0].employee_EstratoSocial,
-                    data[0].employee_TipoVivienda,
+                    data[0].residencia_departamento,
+                    data[0].residencia_ciudad,
+                    data[0].estrato,
+                    data[0].tipo_vivienda,
                     data[0].employee_PersonasACargo,
-                    data[0].employee_TrabajoDepartamento,
-                    data[0].employee_TrabajoCuidad,
+                    data[0].departamento,
+                    data[0].ciudad,
                     data[0].employee_TiempoEnEmpresa,
                     data[0].employee_NombreCargo,
-                    data[0].employee_TipoCargo,
+                    data[0].tipo_cargo,
                     data[0].employee_TiempoEnCargo,
                     data[0].employee_NombreArea,
-                    data[0].employee_TipoContrato,
+                    data[0].tipo_contrato,
                     data[0].employee_HorasLaborales,
-                    data[0].employee_TipoSalario
+                    data[0].tipo_salario
                 ]).draw(false);  // Llama a draw(false) para evitar reinicializar la tabla completamente.
             } else {
                 tablaEmpleados.row(fila).data([
@@ -250,26 +250,26 @@ $("#formEmpleados").submit(function(e){
                     data[0].employee_Secondname,
                     data[0].employee_Lastname,
                     data[0].employee_Secondlastname,
-                    data[0].employee_Genero,
+                    data[0].genero,
                     data[0].employee_Birthdate,
-                    data[0].employee_EstadoCivil,
-                    data[0].employee_UltimoNivelEstudio,
+                    data[0].estado_civil,
+                    data[0].nivel_estudio,
                     data[0].employee_Ocupacion,
-                    data[0].employee_ResidenciaDepartamento,
-                    data[0].employee_ResidenciaCuidad,
-                    data[0].employee_EstratoSocial,
-                    data[0].employee_TipoVivienda,
+                    data[0].residencia_departamento,
+                    data[0].residencia_ciudad,
+                    data[0].estrato,
+                    data[0].tipo_vivienda,
                     data[0].employee_PersonasACargo,
-                    data[0].employee_TrabajoDepartamento,
-                    data[0].employee_TrabajoCuidad,
+                    data[0].departamento,
+                    data[0].ciudad,
                     data[0].employee_TiempoEnEmpresa,
                     data[0].employee_NombreCargo,
-                    data[0].employee_TipoCargo,
+                    data[0].tipo_cargo,
                     data[0].employee_TiempoEnCargo,
                     data[0].employee_NombreArea,
-                    data[0].employee_TipoContrato,
+                    data[0].tipo_contrato,
                     data[0].employee_HorasLaborales,
-                    data[0].employee_TipoSalario
+                    data[0].tipo_salario
                 ]).draw(false);
             }
 
