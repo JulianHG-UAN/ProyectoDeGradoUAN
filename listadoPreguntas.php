@@ -48,6 +48,8 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
             <div class="col-lg-12">
                 <div class="table-responsive">
                     <button type="submit" id="lp-btnGuardar" class="btn btn-dark">Guardar</button>
+                    <button onclick="history.back()" class="btn btn-dark">Volver</button>
+
                     <table id="lp-tablaPreguntas" class="table table-striped table-bordered table-condensed" style="width:100%">
                         <thead class="text-center">
                             <tr>

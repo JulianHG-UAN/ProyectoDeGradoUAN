@@ -27,7 +27,7 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
+    <link rel="stylesheet"  type="text/css" href="vendor/datatables/dataTables.bootstrap4.min.css">
 </head>
 
 <body id="page-top">
@@ -76,7 +76,7 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Sistema de empleados:</h6>
                         <a class="collapse-item" href="listadoEmpleados.php">Listado Empleados</a>
-                        <a class="collapse-item" href="#">Datos</a>
+                        <a class="collapse-item" href="resultadosDatos.php">Datos</a>
                     </div>
                 </div>
             </li>
