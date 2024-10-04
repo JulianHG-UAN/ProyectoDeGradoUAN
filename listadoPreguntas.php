@@ -45,7 +45,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 <div class="container">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12">         
                 <div class="table-responsive">
                     <button type="submit" id="lp-btnGuardar" class="btn btn-dark">Guardar</button>
                     <button onclick="history.back()" class="btn btn-dark">Volver</button>
@@ -53,7 +53,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     <table id="lp-tablaPreguntas" class="table table-striped table-bordered table-condensed" style="width:100%">
                         <thead class="text-center">
                             <tr>
-                                <th>employee_Id</th>
+                                <th style="display: none;">employee_Id</th>
                                 <th>question_id</th>
                                 <th>type_response</th>
                                 <th>answer_value</th>
@@ -61,12 +61,35 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach($data as $dat) { ?>
+                            <?php 
+                            // Array asociativo que asigna los valores a cada question_id
+                            $opcionesPorPregunta = [
+                                1 => ['Nunca' => 1, 'Casi Nunca' => 2, 'Algunas Veces' => 3, 'Casi Siempre' => 4, 'Siempre' => 5],
+                                2 => ['Nunca' => 10, 'Casi Nunca' => 20, 'Algunas Veces' => 30, 'Casi Siempre' => 40, 'Siempre' => 50],
+                                // Añadir más question_id con sus respectivos valores
+                            ];
+
+                            foreach($data as $dat) {
+                                $questionId = $dat['question_id'];
+                                $answerValue = $dat['answer_value']; // El valor actual de la respuesta
+                                $employeeId = $dat['employee_Id'];
+
+                                // Obtener opciones para este question_id, o un set vacío por defecto
+                                $opciones = isset($opcionesPorPregunta[$questionId]) ? $opcionesPorPregunta[$questionId] : ['Nunca' => 1, 'Casi Nunca' => 2, 'Algunas Veces' => 3, 'Casi Siempre' => 4, 'Siempre' => 5];
+                            ?>
                             <tr>
-                                <td data-employee-id="<?php echo $dat['employee_Id']; ?>"><?php echo $dat['employee_fullname']; ?></td>
-                                <td><?php echo $dat['question_id'] ?></td>
-                                <td><?php echo $dat['type_response'] ?></td>
-                                <td><input type="text" value="<?php echo htmlspecialchars($dat['answer_value'], ENT_QUOTES, 'UTF-8'); ?>"></td>
+                                <td style="display: none;" data-employee-id="<?php echo $employeeId; ?>"></td>
+                                <td><?php echo $questionId; ?></td>
+                                <td><?php echo $dat['type_response']; ?></td>
+                                <td>
+                                    <?php foreach ($opciones as $label => $value): ?>
+                                        <div class="form-check form-check-inline">
+                                            <!-- Se asegura que cada grupo de radio buttons tenga un nombre único basado en el question_id -->
+                                            <input class="form-check-input" type="radio" name="answer_value_<?php echo $questionId; ?>" value="<?php echo $value; ?>" <?php echo $answerValue == $value ? 'checked' : ''; ?>>
+                                            <label class="form-check-label"><?php echo $label; ?></label>
+                                        </div>
+                                    <?php endforeach; ?>
+                                </td>
                                 <td style="display: none;"></td>
                             </tr>
                             <?php } ?>                         
