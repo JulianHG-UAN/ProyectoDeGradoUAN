@@ -40,7 +40,7 @@ $(document).ready(function() {
 
         $('#lp-tablaPreguntas tbody tr').each(function() {
             let employee_id = $(this).find('td').eq(0).data('employee-id');
-            let question_id = $(this).find('td').eq(1).text();
+            let question_id = $(this).find('td').eq(1).data('question-id');
 
             // Obtener el valor seleccionado del grupo de radio buttons asociado a esta pregunta
             let answer_value = $(this).find('input[name="answer_value_' + question_id + '"]:checked').val();
