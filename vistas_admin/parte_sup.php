@@ -92,31 +92,8 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Sistema de compañias:</h6>
-                        <a class="collapse-item" href="#">Listado compañias</a>
+                        <a class="collapse-item" href="listadoCompanies.php">Listado compañias</a>
                         <a class="collapse-item" href="#">Usuarios x Compañia</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Utilidades
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Usuarios</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="#">Listado Usuarios</a>
                     </div>
                 </div>
             </li>
