@@ -61,6 +61,7 @@
     <script src="js/tablesEmpleados.js" type="text/javascript"></script>
     <script src="js/tablesDatos.js" type="text/javascript"></script>
     <script src="js/tablesCompanies.js" type="text/javascript"></script>
+    <script src="js/tablesUsuarios.js" type="text/javascript"></script>
 
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>

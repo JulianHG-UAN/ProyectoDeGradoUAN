@@ -101,6 +101,25 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
+            <!-- Nav Item - Usuarios Collapse Menu -->
+            <li class="nav-item">
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsuarios"
+                                aria-expanded="true" aria-controls="collapseUsuarios">
+                                <i class="fas fa-fw fa-wrench"></i>
+                                <span>Usuarios</span>
+                            </a>
+                            <div id="collapseUsuarios" class="collapse" aria-labelledby="headingUsuarios"
+                                data-parent="#accordionSidebar">
+                                <div class="bg-white py-2 collapse-inner rounded">
+                                    <h6 class="collapse-header">Gestion de usuarios:</h6>
+                                    <a class="collapse-item" href="listadoUsuarios.php">Listado</a>
+                                </div>
+                            </div>
+                        </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+            
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -122,20 +141,6 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-
-                    <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar por..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
