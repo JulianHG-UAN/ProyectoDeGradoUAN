@@ -46,12 +46,12 @@ $(document).ready(function() {
 
         company_name = fila.find('td:eq(1)').text();
         company_address = fila.find('td:eq(2)').text();
-        is_active = fila.find('td:eq(3)').text();
+        is_active = parseInt(fila.find('td:eq(3)').data('is-active')) || 0;
 
         $("#company_name").val(company_name);
         $("#company_address").val(company_address);
         $("#is_active").val(is_active);
-
+        
         $(".modal-header").css("background-color", "#007bff");
         $(".modal-header").css("color", "white");
         $(".modal-title").text("Editar Compañia");
@@ -91,12 +91,8 @@ $(document).ready(function() {
             data: {company_id:company_id, company_name:company_name, company_address:company_address, is_active:is_active, opcion:opcion},
             success: function(data){
                 console.log(data);
-                company_id = data[0].company_id;
-                company_name = data[0].company_name;
-                company_address = data[0].company_address;
-                is_active = data[0].is_active;
-                if(opcion == 1){tablaCompanies.row.add([company_id,company_name,company_address,is_active]).draw();}
-                else{tablaCompanies.row(fila).data([company_id,company_name,company_address,is_active]).draw();}
+                if(opcion == 1){tablaCompanies.row.add([data[0].company_id, data[0].company_name, data[0].company_address, data[0].is_active]).draw(false);}
+                else{tablaCompanies.row(fila).data([data[0].company_id, data[0].company_name, data[0].company_address, data[0].is_active]).draw(false);}
             }
         });
         $("#tcomps_modalCRUD").modal("hide");

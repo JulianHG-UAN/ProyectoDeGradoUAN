@@ -48,7 +48,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <td><?php echo $dat['company_id'] ?></td>
                                 <td><?php echo $dat['company_name'] ?></td>
                                 <td><?php echo $dat['company_address'] ?></td>
-                                <td><?php echo $dat['is_active'] ?></td>
+                                <td data-is-active="<?php echo $dat['is_active']; ?>"><?php echo $dat['is_active'] ? 'Activa' : 'Inactiva'; ?></td>
                                 <td></td>
                             </tr>
                             <?php
@@ -85,8 +85,12 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 </div>
 
                 <div class="form-group">
-                <label for="is_active" class="col-form-label">Esta activa?:</label>
-                <input type="text" class="form-control" id="is_active">
+                    <label for="is_active" class="col-form-label">¿Está activa?:</label>
+                    <select class="form-control" id="is_active" name="is_active">
+                        <option value="" selected disabled>Selecciona el estado de la compañía</option> <!-- Opción vacía por defecto -->
+                        <option value="1">Activa</option>
+                        <option value="0">Inactiva</option>
+                    </select>
                 </div>
             </div>
             <div class="modal-footer">

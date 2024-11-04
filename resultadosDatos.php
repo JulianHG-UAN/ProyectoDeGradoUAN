@@ -21,6 +21,7 @@ $datos = $resultado->fetchAll(PDO::FETCH_ASSOC); // Obtiene los resultados como 
         <div class="row">
             <div class="col-lg-12">
                 <div class="table-responsive">
+                    <a href="graficas.php" class="btn btn-success">Ver gráficas</a>
                     <button onclick="history.back()" class="btn btn-dark">Volver</button>
                     <table id="lp-tablaDatos" class="table table-striped table-bordered table-condensed" style="width:100%">
                         <thead class="text-center">
