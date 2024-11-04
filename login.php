@@ -33,7 +33,19 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                        <div class="col-lg-6 d-none d-lg-block bg-login-image rotate-n-15 text-center">
+                            <img src="img/logo.svg" alt="Logo Psymetrics" class="img-fluid custom-logo-size">
+                        </div>
+
+                        <style>
+                            /* Ajusta el tamaño de la imagen */
+                            .custom-logo-size {
+                                width: 80%; /* La imagen ocupará el 80% del ancho de su contenedor */
+                                max-width: 100%; /* Asegura que no exceda el tamaño máximo en dispositivos pequeños */
+                                height: auto; /* Mantiene la proporción de la imagen */
+                                opacity: 0.5; /* Ajusta la opacidad de la imagen */
+                            }
+                        </style>
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
@@ -52,9 +64,6 @@
                                         <input type='submit' value='Ingresar' class="btn btn-primary btn-user btn-block">
                                     </form>
                                     <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="forgot-password.php">Olvidaste la contraseña?</a>
-                                    </div>
                                 </div>
                             </div>
                         </div>

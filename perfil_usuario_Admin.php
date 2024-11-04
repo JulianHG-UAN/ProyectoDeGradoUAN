@@ -25,23 +25,13 @@ if (isset($_POST['update_profile'])) {
    $new_lastname = $_POST['lastname'];
    $new_email = $_POST['email'];
    $new_role_id = $_POST['role'];
-   $new_image = $_FILES['image']['name'];
-   $image_tmp_name = $_FILES['image']['tmp_name'];
-   $image_folder = 'uploaded_img/' . $new_image;
 
    // Actualizar el nombre, apellido, correo y rol
    $update = $conexion->prepare("UPDATE `users` SET users_name = ?, users_lastname = ?, users_email = ?, role_id = ? WHERE users_id = ?");
    $update->execute([$new_name, $new_lastname, $new_email, $new_role_id, $usuarioId]);
 
-   if ($new_image != "") {
-      move_uploaded_file($image_tmp_name, $image_folder);
-      // Actualizar la imagen de perfil
-      $update_image = $conexion->prepare("UPDATE `users` SET image = ? WHERE users_id = ?");
-      $update_image->execute([$new_image, $usuarioId]);
-   }
-
    $_SESSION['usuario'] = $new_email; // Actualizamos la sesión con el nuevo correo
-   header('Location: perfil.php');
+   header('Location: perfil_usuario_Admin.php');
    exit();
 }
 
@@ -103,8 +93,6 @@ if (isset($_POST['update_password'])) {
       <div class="profile-card text-center">
          <h3>Perfil de Usuario</h3>
 
-         <!-- Mostrar imagen de perfil -->
-         <img src="uploaded_img/<?php echo $userData['image']; ?>" alt="Imagen de Perfil" class="profile-img img-fluid">
          <h4><?php echo $userData['users_name'] . ' ' . $userData['users_lastname']; ?></h4>
          <p><?php echo $userData['users_email']; ?></p>
 
@@ -132,10 +120,6 @@ if (isset($_POST['update_password'])) {
                      </option>
                   <?php } ?>
                </select>
-            </div>
-            <div class="form-group">
-               <label for="image">Cambiar Imagen de Perfil</label>
-               <input type="file" name="image" class="form-control-file" accept="image/jpg, image/jpeg, image/png">
             </div>
             <input type="submit" name="update_profile" value="Actualizar Perfil" class="btn btn-primary btn-block">
          </form>
@@ -168,4 +152,4 @@ if (isset($_POST['update_password'])) {
 
 <!-- FIN contenido principal -->
 
-<?php require_once "vistas_admin/parte_inf.php" ?>
+<?php require_once "vistas_admin/parte_inf.php"?>

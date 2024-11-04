@@ -60,6 +60,7 @@
     <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
     <script src="js/tablesEmpleados.js" type="text/javascript"></script>
     <script src="js/tablesDatos.js" type="text/javascript"></script>
+    <script src="js/tablesCompanies.js" type="text/javascript"></script>
     <script src="js/tablesUsuarios.js" type="text/javascript"></script>
 
     <!-- Page level custom scripts -->

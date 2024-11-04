@@ -1,4 +1,4 @@
-<?php require_once "vistas_admin/parte_sup.php"?>
+<?php require_once "vistas_user/parte_sup.php"?>
 
 <!-- INICIO contenido principal -->
 
@@ -219,4 +219,4 @@ $datos = $resultado->fetchAll(PDO::FETCH_ASSOC); // Obtiene los resultados como 
 
 <!-- FIN contenido principal -->
 
-<?php require_once "vistas_admin/parte_inf.php"?>
+<?php require_once "vistas_user/parte_inf.php"?>

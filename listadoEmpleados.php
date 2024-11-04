@@ -1,4 +1,4 @@
-<?php require_once "vistas_admin/parte_sup.php"?>
+<?php require_once "vistas_user/parte_sup.php"?>
 
 <!-- Conexion Base de Datos -->
 <?php
@@ -462,4 +462,4 @@ $tipos_salario = $resultado12->fetchAll(PDO::FETCH_ASSOC);
 
 <!-- FIN contenido principal -->
 
-<?php require_once "vistas_admin/parte_inf.php"?>
+<?php require_once "vistas_user/parte_inf.php"?>
