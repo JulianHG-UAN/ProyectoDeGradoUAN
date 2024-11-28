@@ -28,7 +28,9 @@ $(document).ready(function() {
 				extend:    'pdfHtml5',
 				text:      '<i class="fas fa-file-pdf"></i> ',
 				titleAttr: 'Exportar a PDF',
-				className: 'btn btn-danger'
+				className: 'btn btn-danger',
+                orientation:'landscape',
+                pageSize: '4A0',
 			},
 		]       
     });     
